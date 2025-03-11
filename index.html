@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آسان گام | هوشمندسازی منوهای رستوران و کافه</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="cursor-effect"></div>
+
+    <!-- ناوبری -->
+    <nav class="nav animate__animated animate__fadeInDown">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <span class="gradient-text">آسان</span>گام
+            </a>
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">درباره ما</a>
+                <a href="#features" class="nav-link">امکانات</a>
+                <a href="#pricing" class="nav-link">تعرفه‌ها</a>
+                <a href="#portfolio" class="nav-link">نمونه کارها</a>
+                <a href="#contact" class="nav-link">تماس</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- بخش هرو -->
+    <section class="hero fade-effect">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate__animated animate__fadeInLeft">
+                    <span>نمونه کارهای ما</span>
+                    <span class="gradient-text animate-float">رستوران و کافه</span>
+                    <span>با هوش مصنوعی!</span>
+                </h1>
+                <p class="hero-description animate__animated animate__fadeIn animate__delay-1s" id="slide-description">
+                    در اینجا برخی از پروژه‌های اجرا شده در رستوران‌ها و کافه‌ها را مشاهده می‌کنید.
+                </p>
+                <div class="cta-group animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="#portfolio" class="cta-btn primary animate-hover">
+                        <i class="material-icons">visibility</i>
+                        مشاهده نمونه‌ها
+                    </a>
+                </div>
+            </div>
+            <div class="hero-navigation">
+                <button class="nav-arrow prev" onclick="prevSlide()">
+                    <i class="material-icons">chevron_right</i>
+                </button>
+                <button class="nav-arrow next" onclick="nextSlide()">
+                    <i class="material-icons">chevron_left</i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- سایر بخش‌ها -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header animate__animated animate__fadeInUp">
+                <h2 class="section-title">چرا آسان گام؟</h2>
+                <p class="section-subtitle">نبوغ هوش مصنوعی در خدمات غذایی</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                    <div class="feature-icon">
+                        <i class="material-icons">psychology</i>
+                    </div>
+                    <h3>پیشنهادات هوشمند</h3>
+                    <p>تجزیه و تحلیل پیشرفته سلیقه مشتریان و پیشنهاد شخصی‌سازی شده</p>
+                </div>
+                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                    <div class="feature-icon">
+                        <i class="material-icons">insights</i>
+                    </div>
+                    <h3>آنالیز زنده</h3>
+                    <p>گزارش‌های لحظه‌ای از پرفروش‌ترین آیتم‌ها و سودآوری</p>
+                </div>
+                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                    <div class="feature-icon">
+                        <i class="material-icons">palette</i>
+                    </div>
+                    <h3>طراحی اختصاصی</h3>
+                    <p>منوهای دیجیتال با قابلیت تغییر تم بر اساس برندینگ شما</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کارها -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">نمونه کارهای ما</h2>
+                <p class="section-subtitle">پروژه‌های اجرا شده در رستوران‌ها و کافه‌ها</p>
+            </div>
+            
+            <!-- دکمه‌های فیلتر -->
+            <div class="portfolio-filter">
+                <button class="cta-btn primary active" data-filter="all">همه</button>
+                <button class="cta-btn secondary" data-filter="restaurant">
+                    <i class="material-icons">restaurant</i>
+                    رستوران‌ها
+                </button>
+                <button class="cta-btn secondary" data-filter="cafe">
+                    <i class="material-icons">local_cafe</i>
+                    کافه‌ها
+                </button>
+            </div>
+
+            <!-- گالری نمونه کارها -->
+            <div class="portfolio-grid">
+                <!-- نمونه رستوران -->
+                <div class="portfolio-item restaurant animate__animated" data-animate="animate__fadeInUp">
+                    <div class="portfolio-card">
+                        <img src="images/restaurant-1.jpg" alt="منوی رستوران">
+                        <div class="portfolio-info">
+                            <h3>رستوران لاکچری</h3>
+                            <p>طراحی منو با قابلیت پیشنهاد هوشمند</p>
+                            <button class="cta-btn small animate-hover">
+                                <i class="material-icons">visibility</i>
+                                مشاهده دمو
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- نمونه کافه -->
+                <div class="portfolio-item cafe animate__animated" data-animate="animate__fadeInUp">
+                    <div class="portfolio-card">
+                        <img src="images/cafe-1.jpg" alt="منوی کافه">
+                        <div class="portfolio-info">
+                            <h3>کافه مدرن</h3>
+                            <p>سیستم سفارش آنلاین با هوش مصنوعی</p>
+                            <button class="cta-btn small animate-hover">
+                                <i class="material-icons">visibility</i>
+                                مشاهده دمو
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- اسکریپت‌ها -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
