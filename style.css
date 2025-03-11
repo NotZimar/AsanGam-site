@@ -1,0 +1,410 @@
+:root {
+    --primary: #9B7EDE;
+    --secondary: #C4B1FE;
+    --dark: #0F0A1D;
+    --darker: #070313;
+    --light: #F8F7FC;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', sans-serif;
+    margin-bottom: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--darker);
+    color: var(--light);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* افکت موس */
+.cursor-effect {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    background: radial-gradient(circle, var(--primary), transparent);
+    z-index: 9999; /* مقدار بسیار بالا برای z-index */
+    transition: transform 0.2s ease-out, opacity 0.3s ease;
+    opacity: 0; /* ابتدا مخفی باشد */
+}
+
+.cursor-effect.visible {
+    opacity: 1; /* هنگام حرکت موس نمایش داده شود */
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ناوبری */
+.nav {
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--light);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    position: relative;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* بخش هرو */
+.hero {
+    background: url('images/restaurant-1.jpg') no-repeat center center/cover;
+    position: relative;
+    min-height: 100vh;
+    padding: 12rem 0 5rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.hero-title span {
+    display: block;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+}
+
+/* استایل‌های فلش‌های عقب و جلو */
+/* استایل‌های فلش‌های عقب و جلو */
+.hero-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.nav-arrow {
+    background: transparent; /* حذف پس‌زمینه */
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0.7; /* کاهش شفافیت برای ظاهر زیباتر */
+    position: absolute; /* اضافه کردن position absolute */
+}
+
+.nav-arrow:hover {
+    opacity: 1; /* افزایش شفافیت هنگام هاور */
+}
+
+.nav-arrow i {
+    color: var(--light);
+    font-size: 2.5rem; /* افزایش سایز آیکون */
+}
+
+/* فلش چپ (عقب) */
+.nav-arrow.prev {
+    left: -20%; /* فاصله از لبه چپ */
+}
+
+/* فلش راست (جلو) */
+.nav-arrow.next {
+    right: -20%; /* فاصله از لبه راست */
+}
+/* هوش مصنوعی */
+.ai-interface {
+    background: var(--glass);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.ai-message {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out;
+}
+
+.ai-message.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ai-message.user {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--primary);
+}
+
+.ai-message.bot {
+    background: var(--gradient);
+    box-shadow: 0 8px 32px rgba(155, 126, 222, 0.3);
+}
+
+/* ویژگی‌ها */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-card {
+    background: var(--glass);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-12px) scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 40px rgba(155, 126, 222, 0.25);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient);
+    border-radius: 12px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: var(--light);
+}
+
+/* دکمه‌ها */
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    gap: 0.5rem;
+}
+
+.cta-btn.primary {
+    background: var(--gradient);
+    color: var(--light);
+    box-shadow: 0 8px 15px rgba(138, 99, 210, 0.3);
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    border: 1px solid var(--border);
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(138, 99, 210, 0.4);
+}
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+    .hero .container {
+        flex-direction: column;
+    }
+    
+    .ai-interface {
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+}
+
+/* استایل دکمه‌های فیلتر */
+.portfolio-filter {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.portfolio-filter .cta-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-filter .cta-btn.active {
+    background: var(--gradient);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(155, 126, 222, 0.4);
+}
+
+/* گالری نمونه کارها */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.portfolio-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.portfolio-info h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.cta-btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.section-header {
+    justify-content: center;
+    text-align: center;
+}
+
+/* افکت فید برای عکس‌ها */
+.fade-effect {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-effect.visible {
+    opacity: 1;
+}
