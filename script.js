@@ -162,3 +162,5 @@ setInterval(nextSlide, 5000);
 
 // بارگذاری اولین اسلاید
 changeSlide(currentSlide);
+
+// salam
