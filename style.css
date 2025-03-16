@@ -399,7 +399,7 @@ body {
     text-align: center;
 }
 
-/* افکت فید برای عکس‌ها */
+/*  فید برای عکس‌ها */
 .fade-effect {
     opacity: 0;
     transition: opacity 1s ease-in-out;
