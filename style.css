@@ -119,7 +119,7 @@ body {
 
 /* بخش هرو با عکس ثابت */
 .hero {
-    /* background: url('images/background.jpg') no-repeat center center/cover; عکس ثابت */
+    background: url('images/background.jpg') no-repeat center center/cover; /*عکس ثابت*/
     position: relative;
     min-height: 100vh;
     padding: 12rem 0 5rem;
