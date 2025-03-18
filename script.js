@@ -164,3 +164,52 @@ setInterval(nextSlide, 5000);
 changeSlide(currentSlide);
 
 // salam
+
+class Slider {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.navButtons = document.querySelectorAll('.nav-btn');
+        this.currentSlide = 0;
+        this.autoPlayInterval = null;
+        this.init();
+    }
+
+    init() {
+        // شروع اتوپلی
+        this.startAutoPlay();
+
+        // کنترل دکمه‌های ناوبری
+        this.navButtons.forEach((button, index) => {
+            button.addEventListener('click', () => this.goToSlide(index));
+        });
+    }
+
+    startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000);
+    }
+
+    resetAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+        this.startAutoPlay();
+    }
+
+    goToSlide(index) {
+        this.slides[this.currentSlide].classList.remove('active');
+        this.navButtons[this.currentSlide].classList.remove('active');
+        
+        this.currentSlide = index;
+        
+        this.slides[this.currentSlide].classList.add('active');
+        this.navButtons[this.currentSlide].classList.add('active');
+        
+        this.resetAutoPlay();
+    }
+
+    nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+    }
+}
+
+// راه‌اندازی اسلایدر
+document.addEventListener('DOMContentLoaded', () => new Slider());

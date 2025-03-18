@@ -37,14 +37,15 @@ body {
     position: fixed;
     pointer-events: none;
     background: radial-gradient(circle, var(--primary), transparent);
-    z-index: 9999; /* مقدار بسیار بالا برای z-index */
+    z-index: 9999;
     transition: transform 0.2s ease-out, opacity 0.3s ease;
-    opacity: 0; /* ابتدا مخفی باشد */
+    opacity: 0;
 }
 
 .cursor-effect.visible {
-    opacity: 1; /* هنگام حرکت موس نمایش داده شود */
+    opacity: 1;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -118,7 +119,7 @@ body {
     width: 100%;
 }
 
-/* بخش هرو */
+/* اسلایدشو */
 .hero {
     background: url('images/restaurant-1.jpg') no-repeat center center/cover;
     position: relative;
@@ -142,9 +143,31 @@ body {
     z-index: 2;
 }
 
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.slider {
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
 .hero-title {
     font-size: 3.5rem;
-    line-height: 1.2;
+    line-height: 1.3;
     margin-bottom: 2rem;
 }
 
@@ -158,89 +181,30 @@ body {
     margin-bottom: 3rem;
 }
 
-/* استایل‌های فلش‌های عقب و جلو */
-/* استایل‌های فلش‌های عقب و جلو */
-.hero-navigation {
+/* دکمه‌های ناوبری اسلایدشو */
+.slider-nav {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+    gap: 10px;
     z-index: 10;
 }
 
-.nav-arrow {
-    background: transparent; /* حذف پس‌زمینه */
-    border: none;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    background: transparent;
     cursor: pointer;
-    transition: opacity 0.3s ease;
-    opacity: 0.7; /* کاهش شفافیت برای ظاهر زیباتر */
-    position: absolute; /* اضافه کردن position absolute */
+    transition: background 0.3s ease;
 }
 
-.nav-arrow:hover {
-    opacity: 1; /* افزایش شفافیت هنگام هاور */
-}
-
-.nav-arrow i {
-    color: var(--light);
-    font-size: 2.5rem; /* افزایش سایز آیکون */
-}
-
-/* فلش چپ (عقب) */
-.nav-arrow.prev {
-    left: -20%; /* فاصله از لبه چپ */
-}
-
-/* فلش راست (جلو) */
-.nav-arrow.next {
-    right: -20%; /* فاصله از لبه راست */
-}
-/* هوش مصنوعی */
-.ai-interface {
-    background: var(--glass);
-    border-radius: 12px;
-    padding: 2rem;
-    width: 400px;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.ai-message {
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.3s;
-    opacity: 0;
-    transform: translateX(30px);
-    transition: all 0.6s ease-out;
-}
-
-.ai-message.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.ai-message.user {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--primary);
-}
-
-.ai-message.bot {
-    background: var(--gradient);
-    box-shadow: 0 8px 32px rgba(155, 126, 222, 0.3);
-}
-
-/* ویژگی‌ها */
+.nav-btn.active {
+    background: var(--light);
+}/* ویژگی‌ها */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -311,18 +275,14 @@ body {
 
 /* رسپانسیو */
 @media (max-width: 768px) {
-    .hero .container {
-        flex-direction: column;
+    .hero-slider .slide-content h1 {
+        font-size: 2rem;
     }
-    
-    .ai-interface {
-        width: 100%;
+
+    .hero-slider .slide-content p {
+        font-size: 1rem;
     }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
+
     .nav-menu {
         gap: 1rem;
     }
@@ -399,7 +359,7 @@ body {
     text-align: center;
 }
 
-/*  فید برای عکس‌ها */
+/* فید برای عکس‌ها */
 .fade-effect {
     opacity: 0;
     transition: opacity 1s ease-in-out;
