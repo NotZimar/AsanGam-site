@@ -116,52 +116,6 @@ document.querySelectorAll('.portfolio-filter button').forEach(button => {
     });
 });
 
-// اسلایدشو
-let currentSlide = 0;
-const slides = [
-    { image: 'images/restaurant-1.jpg', description: 'رستوران لاکچری - طراحی منو با قابلیت پیشنهاد هوشمند' },
-    { image: 'images/cafe-1.jpg', description: 'کافه مدرن - سیستم سفارش آنلاین با هوش مصنوعی' },
-    { image: 'images/restaurant-2.jpg', description: 'رستوران خانوادگی - منوی دیجیتال با طراحی اختصاصی' },
-    { image: 'images/cafe-2.jpg', description: 'کافه سنتی - پیشنهادات هوشمند بر اساس سلیقه مشتری' }
-];
-
-const hero = document.querySelector('.hero');
-const description = document.getElementById('slide-description');
-
-function changeSlide(index) {
-    // بررسی وجود عکس
-    const img = new Image();
-    img.src = slides[index].image;
-    img.onload = () => {
-        // اگر عکس موجود بود، تغییر اسلاید
-        hero.classList.remove('visible');
-        setTimeout(() => {
-            hero.style.backgroundImage = `url(${slides[index].image})`;
-            description.textContent = slides[index].description;
-            hero.classList.add('visible');
-        }, 1000); // زمان افکت فید
-    };
-    img.onerror = () => {
-        // اگر عکس موجود نبود، برگرد به اولین عکس
-        changeSlide(0);
-    };
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    changeSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    changeSlide(currentSlide);
-}
-
-// تغییر خودکار اسلایدها هر 5 ثانیه
-setInterval(nextSlide, 5000);
-
-// بارگذاری اولین اسلاید
-changeSlide(currentSlide);
 
 // salam
 
