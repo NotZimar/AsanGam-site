@@ -142,10 +142,12 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
+    min-height: 400px; /* حداقل ارتفاع برای محتوا */
 }
 
 .slider {
     position: relative;
+    margin-top: 0; /* کاهش از 1rem به 0 */
 }
 
 .slide {
@@ -155,6 +157,7 @@ body {
     width: 100%;
     opacity: 0;
     transition: opacity 0.6s ease;
+    min-height: 150px; /* ارتفاع ثابت برای اسلایدها */
 }
 
 .slide.active {
@@ -174,19 +177,31 @@ body {
 .hero-description {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* اختیاری: کاهش از 3rem به 2rem برای فاصله کمتر تا دکمه */
+}
+
+/* استایل گروه دکمه‌ها */
+.cta-group {
+    display: flex;
+    align-items: flex-start; /* برای RTL به سمت راست هم‌تراز می‌شود */
+    gap: 1rem;
+}
+
+/* کانتینر برای دکمه‌های ناوبری */
+.slider-nav-container {
+    position: absolute;
+    bottom: 40px; /* فاصله از پایین */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
 }
 
 /* دکمه‌های ناوبری اسلایدشو */
-
 .slider-nav {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    z-index: 10;
+    gap: 12px;
 }
 
 .nav-btn {
@@ -196,11 +211,12 @@ body {
     border: 2px solid var(--light);
     background: transparent;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-btn.active {
     background: var(--light);
+    transform: scale(1.2);
 }
 
 /* ویژگی‌ها */
@@ -289,7 +305,7 @@ body {
 }
 
 .portfolio *{
-    padding-bottom: 15px;
+    padding-bottom: 0;
 }
 
 /* استایل دکمه‌های فیلتر */
@@ -321,6 +337,7 @@ body {
 }
 
 .portfolio-item {
+    padding-bottom: 0;
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -329,30 +346,109 @@ body {
 .portfolio-item:hover {
     transform: translateY(-10px);
 }
-
 .portfolio-card {
     background: var(--glass);
     border: 1px solid var(--border);
     border-radius: 15px;
     overflow: hidden;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9; /* نسبت ثابت برای کارت */
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 0; /* اطمینان از عدم وجود پدینگ */
+    background-size: cover;
+    background-position: center;
 }
 
 .portfolio-card img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 0;
 }
 
 .portfolio-info {
-    padding: 1.5rem;
-    text-align: center;
+    position: absolute;
+    inset: 0; /* پوشاندن کل فضای کارت */
+    background: rgba(15, 10, 29, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 1;
+    transition: all 0.3s ease;
 }
 
+/* مخفی کردن پاراگراف و دکمه در حالت عادی */
+.portfolio-info p,
+.portfolio-info .cta-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* انیمیشن هاور برای کل کارت با گلو افکت قوی‌تر */
+.portfolio-card:hover {
+    transform: scale(1.03);
+    box-shadow: 
+        0 0 20px rgba(184, 160, 240, 0.5),
+        0 0 40px rgba(184, 160, 240, 0.4),
+        0 0 80px rgba(184, 160, 240, 0.3); /* گلو افکت درخشان‌تر در اطراف کارت */
+    border: 1px solid rgba(196, 177, 254, 0.5); /* لبه روشن‌تر */
+    z-index: 2; /* اطمینان از نمایش کارت روی سایر عناصر */
+}
+
+.portfolio-card:hover .portfolio-info {
+    background: rgba(15, 10, 29, 0.85); /* تیره‌تر شدن در هنگام هاور */
+}
+
+/* نمایش پاراگراف و دکمه در حالت هاور */
+.portfolio-card:hover .portfolio-info p,
+.portfolio-card:hover .portfolio-info .cta-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* تغییر رنگ دکمه در حالت هاور */
+.portfolio-card:hover .portfolio-info .cta-btn {
+    background: var(--gradient); /* استفاده از گرادیان تعریف شده در متغیرها */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 0 15px rgba(196, 177, 254, 0.5); /* گلو افکت برای دکمه */
+}
+
+/* انیمیشن برای دکمه در هاور */
+.portfolio-card:hover .portfolio-info .cta-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 20px rgba(196, 177, 254, 0.7);
+    transition: all 0.2s ease;
+}
+
+/* استایل محتوا */
 .portfolio-info h3 {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+    color: var(--light);
+    font-size: 1.5rem;
+    margin: 0;
 }
 
+.portfolio-info p {
+    color: var(--light);
+    text-align: center;
+    margin: 0;
+}
+
+.portfolio-info .cta-btn {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
 .cta-btn.small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -384,4 +480,11 @@ body {
     margin-bottom: 10vh;
 
 
+}
+
+/* استایل برای تایتل ثابت کوچکتر - کاهش فاصله پایین */
+.hero-title.smaller {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem; /* کاهش از 3rem به 1.5rem */
+    position: relative;
 }
