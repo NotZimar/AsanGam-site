@@ -56,22 +56,34 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* ناوبری */
+/* ناوبری با لبه پایینی محو شده بهتر */
 .nav {
     padding: 1.5rem 0;
     position: fixed;
     width: 100%;
     top: 0;
-    background: transparent;
+    /* تغییر گرادیان برای محو شدگی بهتر */
+    background: linear-gradient(to bottom, 
+                rgba(7, 3, 19, 0.95) 0%, 
+                rgba(7, 3, 19, 0.8) 50%, 
+                rgba(7, 3, 19, 0.4) 85%,
+                rgba(7, 3, 19, 0) 100%);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
     transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-bottom: none;
+    /* افزایش ارتفاع ناحیه گرادیان */
+    padding-bottom: 1.5rem;
 }
 
+/* تنظیم محتوای داخل منو */
 .nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* بدون تغییر پدینگ اضافی اینجا */
+    padding-bottom: 0;
 }
 
 .nav-logo {
@@ -187,21 +199,19 @@ body {
     gap: 1rem;
 }
 
-/* کانتینر برای دکمه‌های ناوبری */
+/* حذف کانتینر قبلی */
 .slider-nav-container {
-    position: absolute;
-    bottom: 40px; /* فاصله از پایین */
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 10;
+    display: none;
 }
 
-/* دکمه‌های ناوبری اسلایدشو */
+/* استایل جدید برای دکمه‌های ناوبری */
 .slider-nav {
     display: flex;
+    justify-content: right;
     gap: 12px;
+    margin-bottom: 7vh;
+    margin-top: -2vh;
+    margin-right: 6vw;
 }
 
 .nav-btn {
@@ -492,6 +502,6 @@ section {
 /* استایل برای تایتل ثابت کوچکتر - کاهش فاصله پایین */
 .hero-title.smaller {
     font-size: 2.8rem;
-    margin-bottom: 1.5rem; /* کاهش از 3rem به 1.5rem */
+    margin-bottom: 4.5rem; /* کاهش از 3rem به 1.5rem */
     position: relative;
 }
