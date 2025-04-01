@@ -213,6 +213,7 @@ body {
 
 .slide.active {
     opacity: 1;
+    z-index: 2;
 }
 
 .hero-title {
@@ -347,6 +348,73 @@ body {
     /* نمایش منوی همبرگر */
     .hamburger {
         display: block;
+    }
+    
+    .nav {
+        padding: 1rem 0;
+        background-color: rgba(15, 10, 29, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .nav .container {
+        justify-content: space-between;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: rgba(15, 10, 29, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 70px 0 20px;
+        z-index: 1004;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        margin: 8px 0;
+        padding: 12px 20px;
+        width: 85%;
+        text-align: center;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        display: block;
+    }
+    
+    .nav-link:hover {
+        background: rgba(155, 126, 222, 0.1);
+    }
+    
+    .no-scroll {
+        overflow: hidden;
+    }
+    
+    /* تنظیمات اسلایدر */
+    .slider-nav {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .slide {
+        min-height: 150px;
     }
     
     /* مخفی کردن منوی اصلی و نمایش به صورت فول اسکرین در حالت فعال */
@@ -1187,6 +1255,30 @@ section {
     .portfolio-info p {
         font-size: 0.9rem;
         margin: 8px 0;
+    }
+}
+
+/* ویژه موبایل - اطمینان از نمایش پورتفولیو */
+@media (max-width: 768px) {
+    .portfolio {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .portfolio-item {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .portfolio-info,
+    .portfolio-info h3,
+    .portfolio-info p,
+    .portfolio-info .cta-btn {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 
