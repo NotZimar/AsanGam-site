@@ -1,6 +1,9 @@
+// همه کلاس‌ها
 class CursorEffect {
     constructor() {
         this.cursor = document.querySelector('.cursor-effect');
+        if (!this.cursor) return;
+        
         this.init();
     }
 
@@ -43,10 +46,6 @@ class CursorEffect {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new CursorEffect();
-});
-
 class ScrollAnimator {
     constructor() {
         this.observer = new IntersectionObserver(this.handleIntersect.bind(this), {
@@ -74,57 +73,18 @@ class ScrollAnimator {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new CursorEffect();
-    new ScrollAnimator();
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    });
-});
-
-// فیلتر نمونه کارها بر اساس دسته‌بندی
-document.querySelectorAll('.portfolio-filter button').forEach(button => {
-    button.addEventListener('click', () => {
-        // حذف کلاس active از همه دکمه‌ها
-        document.querySelectorAll('.portfolio-filter button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // افزودن کلاس active به دکمه انتخاب شده
-        button.classList.add('active');
-        
-        // دریافت فیلتر انتخاب شده
-        const filter = button.dataset.filter;
-        
-        // نمایش/مخفی کردن نمونه‌ها
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            if (filter === 'all' || item.classList.contains(filter)) {
-                item.style.display = 'block';
-                item.classList.add('animate__fadeIn');
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-});
-
-
-// salam
-
 class Slider {
     constructor() {
         this.slides = document.querySelectorAll('.slide');
         this.navButtons = document.querySelectorAll('.nav-btn');
+        this.sliderContent = document.querySelector('.slider-content');
+        
+        if (!this.slides.length || !this.sliderContent) return;
+        
         this.currentSlide = 0;
         this.autoPlayInterval = null;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
         this.init();
     }
 
@@ -136,6 +96,57 @@ class Slider {
         this.navButtons.forEach((button, index) => {
             button.addEventListener('click', () => this.goToSlide(index));
         });
+
+        // اضافه کردن پشتیبانی از swipe
+        this.setupSwipeSupport();
+    }
+
+    setupSwipeSupport() {
+        // تشخیص لمس برای موبایل
+        this.sliderContent.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        this.sliderContent.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, {passive: true});
+
+        // تشخیص درگ برای دسکتاپ
+        this.sliderContent.addEventListener('mousedown', (e) => {
+            this.touchStartX = e.screenX;
+            // فعال کردن حالت درگ
+            this.sliderContent.style.cursor = 'grabbing';
+            document.addEventListener('mouseup', this.handleMouseUp);
+        });
+
+        const handleMouseUp = (e) => {
+            this.touchEndX = e.screenX;
+            this.handleSwipe();
+            // غیرفعال کردن حالت درگ
+            this.sliderContent.style.cursor = 'grab';
+            document.removeEventListener('mouseup', this.handleMouseUp);
+        };
+
+        this.handleMouseUp = handleMouseUp.bind(this);
+    }
+
+    handleSwipe() {
+        // محاسبه فاصله swipe
+        const swipeDistance = this.touchEndX - this.touchStartX;
+        const threshold = 50; // آستانه برای تشخیص swipe
+
+        // اگر به اندازه کافی swipe شده باشد
+        if (Math.abs(swipeDistance) > threshold) {
+            // اگر RTL است، جهت‌ها را برعکس می‌کنیم
+            if (swipeDistance > 0) {
+                // swipe به راست در RTL به معنی حرکت به اسلاید قبلی است
+                this.prevSlide();
+            } else {
+                // swipe به چپ در RTL به معنی حرکت به اسلاید بعدی است
+                this.nextSlide();
+            }
+        }
     }
 
     startAutoPlay() {
@@ -163,7 +174,139 @@ class Slider {
         const nextIndex = (this.currentSlide + 1) % this.slides.length;
         this.goToSlide(nextIndex);
     }
+
+    prevSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(prevIndex);
+    }
 }
 
-// راه‌اندازی اسلایدر
-document.addEventListener('DOMContentLoaded', () => new Slider());
+class MobileMenu {
+    constructor() {
+        this.hamburger = document.getElementById('mobile-menu-toggle');
+        this.navMenu = document.getElementById('mobile-menu');
+        this.body = document.body;
+        this.navLinks = document.querySelectorAll('.nav-link');
+        
+        if (!this.hamburger || !this.navMenu) return;
+        
+        this.init();
+    }
+    
+    init() {
+        this.closeMenu();
+        
+        this.hamburger.addEventListener('click', this.toggleHandler.bind(this));
+        
+        // Close menu when clicking on nav links
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMenu();
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!this.navMenu.contains(e.target) && !this.hamburger.contains(e.target) && this.navMenu.classList.contains('active')) {
+                this.closeMenu();
+            }
+        });
+    }
+    
+    toggleHandler() {
+        if (this.navMenu.classList.contains('active')) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+    
+    openMenu() {
+        this.hamburger.classList.add('active');
+        this.navMenu.classList.add('active');
+        this.body.classList.add('no-scroll');
+    }
+    
+    closeMenu() {
+        this.hamburger.classList.remove('active');
+        this.navMenu.classList.remove('active');
+        this.body.classList.remove('no-scroll');
+    }
+}
+
+class PortfolioFilter {
+    constructor() {
+        this.filterButtons = document.querySelectorAll('.portfolio-filter button');
+        this.portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        if (!this.filterButtons.length) return;
+        
+        this.init();
+    }
+    
+    init() {
+        this.filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // حذف کلاس active از همه دکمه‌ها
+                this.filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // افزودن کلاس active به دکمه انتخاب شده
+                button.classList.add('active');
+                
+                // دریافت فیلتر انتخاب شده
+                const filter = button.dataset.filter;
+                
+                // نمایش/مخفی کردن نمونه‌ها
+                this.portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        item.classList.add('animate__fadeIn');
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+}
+
+class SmoothScroll {
+    constructor() {
+        this.anchors = document.querySelectorAll('a[href^="#"]');
+        if (!this.anchors.length) return;
+        
+        this.init();
+    }
+    
+    init() {
+        this.anchors.forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = anchor.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+}
+
+// راه‌اندازی همه کامپوننت‌ها در لود صفحه - فقط یک بار
+document.addEventListener('DOMContentLoaded', () => {
+    new CursorEffect();
+    new ScrollAnimator();
+    new MobileMenu();
+    new Slider();
+    new PortfolioFilter();
+    new SmoothScroll();
+    AOS.init();
+});

@@ -51,80 +51,65 @@ body {
 }
 
 .gradient-text {
-    background: var(--gradient);
+    background: linear-gradient(to right, #7863ff, #5c27fe);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* ناوبری با لبه پایینی محو شده بهتر */
 .nav {
-    padding: 1.5rem 0;
-    position: fixed;
     width: 100%;
+    background-color: rgba(15, 10, 29, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
     top: 0;
-    /* تغییر گرادیان برای محو شدگی بهتر */
-    background: linear-gradient(to bottom, 
-                rgba(7, 3, 19, 0.95) 0%, 
-                rgba(7, 3, 19, 0.8) 50%, 
-                rgba(7, 3, 19, 0.4) 85%,
-                rgba(7, 3, 19, 0) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    left: 0;
     z-index: 1000;
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border-bottom: none;
-    /* افزایش ارتفاع ناحیه گرادیان */
-    padding-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* تنظیم محتوای داخل منو */
 .nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* بدون تغییر پدینگ اضافی اینجا */
-    padding-bottom: 0;
+    padding: 15px 0;
 }
 
 .nav-logo {
-    font-size: 1.8rem;
+    font-size: 24px;
     font-weight: 700;
+    color: #fff;
     text-decoration: none;
-    color: var(--light);
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+    margin: 0 15px;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    position: relative;
-    border-radius: 8px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient);
-    transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--primary);
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
+    color: #C4B1FE;
 }
 
-.nav-link:hover::after {
-    width: 100%;
+/* استایل همبرگر منو (پنهان در دسکتاپ) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    background-color: #fff;
+    transition: all 0.3s ease;
 }
 
 /* بخش هرو با عکس ثابت */
@@ -132,7 +117,7 @@ body {
     background: url('images/background.jpg') no-repeat center center/cover; /*عکس ثابت*/
     position: relative;
     min-height: 100vh;
-    padding: 12rem 0 5rem;
+    padding: 15rem 0 6rem;
 }
 
 .hero::before {
@@ -157,9 +142,61 @@ body {
     min-height: 400px; /* حداقل ارتفاع برای محتوا */
 }
 
-.slider {
+.hero-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6rem;
+    margin-top: 6rem;
     position: relative;
-    margin-top: 0; /* کاهش از 1rem به 0 */
+}
+
+.slider {
+    float: right;
+    flex: 1;
+    max-width: 48%;
+    position: relative;
+    min-height: 280px;
+    margin-top: 30px;
+}
+
+.slider-wrapper {
+    position: relative;
+}
+
+.slide-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.slider-content {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.slider-content:active {
+    cursor: grabbing;
+}
+
+.hero-illustration {
+    flex: 1;
+    max-width: 40%;
+    margin-top: -12rem;
+    margin-left: -12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-illustration .cta-group {
+    margin-top: 1.5rem;
+    justify-content: center;
+    width: 100%;
 }
 
 .slide {
@@ -169,7 +206,9 @@ body {
     width: 100%;
     opacity: 0;
     transition: opacity 0.6s ease;
-    min-height: 150px; /* ارتفاع ثابت برای اسلایدها */
+    min-height: 250px;
+    padding-top: 1.5rem;
+    padding-right: 25px; /* Create space for nav buttons for RTL layout */
 }
 
 .slide.active {
@@ -187,9 +226,12 @@ body {
 }
 
 .hero-description {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2rem; /* اختیاری: کاهش از 3rem به 2rem برای فاصله کمتر تا دکمه */
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 5;
+    display: inline-block;
 }
 
 /* استایل گروه دکمه‌ها */
@@ -206,12 +248,13 @@ body {
 
 /* استایل جدید برای دکمه‌های ناوبری */
 .slider-nav {
-    display: flex;
-    justify-content: right;
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
     gap: 12px;
-    margin-bottom: 7vh;
-    margin-top: -2vh;
-    margin-right: 6vw;
+    top: 1.2rem;
+    right: -30px;
+    z-index: 6;
 }
 
 .nav-btn {
@@ -226,7 +269,7 @@ body {
 
 .nav-btn.active {
     background: var(--light);
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 
 /* ویژگی‌ها */
@@ -301,16 +344,368 @@ body {
 
 /* رسپانسیو */
 @media (max-width: 768px) {
-    .hero-slider .slide-content h1 {
-        font-size: 2rem;
+    /* نمایش منوی همبرگر */
+    .hamburger {
+        display: block;
     }
+    
+    /* مخفی کردن منوی اصلی و نمایش به صورت فول اسکرین در حالت فعال */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(7, 3, 19, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: 0.3s ease;
+        z-index: 1001;
+        padding: 4rem 0;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    /* استایل لینک‌های منو */
+    .nav-link {
+        padding: 0.5rem 2rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* تنظیمات هرو */
+    .hero-flex-container {
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+    
+    .slider, .hero-illustration {
+        max-width: 100%;
+        float: none;
+    }
+    
+    .hero-illustration {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    
+    .ai-interface {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* تنظیمات فونت‌ها برای تبلت */
+    .hero-title.smaller {
+        font-size: 2.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1.2rem;
+    }
+}
 
-    .hero-slider .slide-content p {
+/* استایل‌های خاص موبایل */
+@media (max-width: 414px) {
+    /* تنظیمات کلی */
+    .hero {
+        background-position: center;
+    }
+    
+    /* تایتل و بخش اصلی */
+    .hero-title.smaller {
+        font-size: 1.7rem;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* اسلایدر با فاصله مناسب */
+    .slider {
+        float: none;
+        margin-bottom: 2rem;
+    }
+    
+    /* حذف محدودیت های width روی اسلایدر در موبایل */
+    .slider-content {
+        width: 100%;
+    }
+    
+    /* دکمه اسلایدر با فاصله مناسب */
+    .slider-nav {
+        right: -12px;
+    }
+    
+    /* اصلاح فاصله‌ها برای ai-interface */
+    .ai-interface {
+        max-width: 90%;
+        margin: 0 auto 1.5rem;
+    }
+    
+    /* اصلاح نسبت‌ها در کارت‌ها */
+    .portfolio-card {
+        aspect-ratio: 16/9;
+    }
+    
+    /* نمایش محتویات کارت با hover */
+    .portfolio-info {
+        opacity: 0.8; /* کمی شفاف‌تر در حالت عادی */
+    }
+    
+    .portfolio-card:hover .portfolio-info {
+        opacity: 1;
+    }
+    
+    /* کاهش اندازه آیکون‌ها متناسب با اندازه موبایل */
+    .material-icons {
+        font-size: 18px;
+    }
+    
+    /* برطرف کردن مشکل استایل‌های قبلی */
+    .cta-btn {
+        width: auto;
+        margin-bottom: 0;
+    }
+    
+    /* بهبود استایل دکمه مشاهده دمو */
+    .hero-illustration .cta-btn.primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        border-radius: 8px;
+    }
+    
+    .hero-illustration .cta-btn.primary i {
         font-size: 1rem;
     }
-
+    
+    /* تنظیم مجدد اسلایدر و تایتل */
+    .hero-title.smaller span {
+        display: inline-block;
+        margin-bottom: 0.2rem;
+    }
+    
+    .hero-title.smaller .gradient-text {
+        display: inline-block;
+    }
+    
+    /* بهبود اسلایدر */
+    .slider-content {
+        min-height: 120px;
+    }
+    
+    .slide {
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* کانتینر و ناوبری */
+    .container {
+        padding: 0 0.8rem;
+    }
+    
+    .nav {
+        padding: 0.7rem 0;
+    }
+    
+    .nav-logo {
+        font-size: 1.3rem;
+    }
+    
+    /* منوی همبرگر و ناوبری */
     .nav-menu {
-        gap: 1rem;
+        width: 80%;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 1.5rem;
+    }
+    
+    /* هرو و تایتل - شبیه به دسکتاپ */
+    .hero {
+        padding: 6rem 0 2rem;
+    }
+    
+    .hero-flex-container {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    /* اسلایدر و متن - شبیه به دسکتاپ */
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .slider {
+        min-height: 180px;
+        margin-top: 0;
+    }
+    
+    .slide {
+        min-height: 120px;
+    }
+    
+    .slider-nav {
+        gap: 8px;
+        right: -20px;
+    }
+    
+    .nav-btn {
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* اینترفیس هوش مصنوعی */
+    .ai-interface {
+        padding: 1rem;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ai-message {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .ai-message.user {
+        border-width: 1px;
+    }
+    
+    /* دکمه‌ها */
+    .cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* دکمه مشاهده دمو کوچکتر */
+    .hero-illustration .cta-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        width: auto;
+    }
+    
+    .cta-btn.small {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        width: auto;
+        margin-bottom: 0;
+    }
+    
+    .cta-group {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    /* هدر بخش‌ها */
+    .section-header h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* کارت‌های ویژگی */
+    .feature-card {
+        padding: 1.5rem;
+        transition: 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* فیلتر نمونه کارها */
+    .portfolio-filter {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.8rem;
+        justify-content: flex-start;
+        gap: 0.4rem;
+    }
+    
+    .portfolio-filter .cta-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        margin-bottom: 0;
+        width: auto;
+    }
+    
+    /* گرید نمونه کارها - شبیه به دسکتاپ */
+    .portfolio-grid {
+        gap: 1.2rem;
+    }
+    
+    .portfolio-card {
+        aspect-ratio: 16/9;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+    }
+    
+    .portfolio-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .portfolio-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .portfolio-info p {
+        font-size: 0.9rem;
+    }
+    
+    /* غیرفعال کردن افکت موس */
+    .cursor-effect {
+        display: none;
+    }
+    
+    /* تغییر چیدمان برای شباهت بیشتر به دسکتاپ */
+    .hero-illustration {
+        margin-top: 1rem;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-illustration .cta-group {
+        width: auto;
+        margin-top: 1rem;
     }
 }
 
@@ -501,7 +896,298 @@ section {
 
 /* استایل برای تایتل ثابت کوچکتر - کاهش فاصله پایین */
 .hero-title.smaller {
-    font-size: 2.8rem;
-    margin-bottom: 4.5rem; /* کاهش از 3rem به 1.5rem */
+    font-size: 3.2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+}
+.ai-interface {
+    background: var(--glass);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     position: relative;
 }
+
+.ai-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem; /* افزایش فاصله بین پیام‌ها */
+    border-radius: 15px;
+    position: relative;
+    transition: 0.3s;
+    display: block; /* اطمینان از نمایش بلاکی */
+    clear: both; /* جلوگیری از همپوشانی */
+}
+
+.ai-message.user {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary);
+    margin-bottom: 1.5rem; /* فاصله بیشتر از پیام قبلی */
+}
+
+.ai-message.bot {
+    background: var(--gradient);
+    box-shadow: 0 8px 32px rgba(155, 126, 222, 0.3);
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* استایل دکمه همبرگر - کاملاً بازنویسی شده */
+.hamburger {
+    display: none;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1005;
+    margin-left: 15px;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 20px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+/* استایل منوی موبایل - کاملاً بازنویسی شده */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .nav {
+        padding: 1rem 0;
+        background-color: rgba(15, 10, 29, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .nav .container {
+        justify-content: space-between;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: rgba(15, 10, 29, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 70px 0 20px;
+        z-index: 1004;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        margin: 8px 0;
+        padding: 12px 20px;
+        width: 85%;
+        text-align: center;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        display: block;
+    }
+    
+    .nav-link:hover {
+        background: rgba(155, 126, 222, 0.1);
+    }
+    
+    .no-scroll {
+        overflow: hidden;
+    }
+    
+    /* چیدمان هرو برای موبایل - شبیه دسکتاپ */
+    .hero-flex-container {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 30px;
+    }
+    
+    .slider {
+        float: none;
+        max-width: 100%;
+        min-height: 180px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-illustration {
+        max-width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* استایل‌های خاص برای آیفون XR و موبایل‌های کوچکتر */
+@media (max-width: 414px) {
+    /* تنظیمات کلی */
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav {
+        padding: 12px 0;
+    }
+    
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+    
+    /* هرو سکشن و تایتل */
+    .hero {
+        padding: 90px 0 30px;
+        background-position: center;
+    }
+    
+    .hero-title.smaller {
+        font-size: 2rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    /* اسلایدر - شبیه دسکتاپ */
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .slider-nav {
+        right: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .nav-btn {
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* AI Interface - چیدمان دسکتاپ */
+    .ai-interface {
+        padding: 15px;
+        max-width: 320px;
+        margin: 0 auto 20px;
+    }
+    
+    /* دکمه‌ها */
+    .cta-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* دکمه کوچکتر مشاهده دمو */
+    .hero-illustration .cta-btn.primary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .cta-btn i {
+        font-size: 1.1rem;
+    }
+    
+    /* بخش portfolio و کارت‌ها */
+    .section-header {
+        margin-bottom: 20px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+    
+    .portfolio-filter {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+    
+    .portfolio-filter .cta-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+    
+    .portfolio-grid {
+        gap: 20px;
+    }
+    
+    .portfolio-card {
+        aspect-ratio: 16/9;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .portfolio-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .portfolio-info p {
+        font-size: 0.9rem;
+        margin: 8px 0;
+    }
+}
+
+

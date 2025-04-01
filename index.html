@@ -2,12 +2,13 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>آسان گام | هوشمندسازی منوهای رستوران و کافه</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
     <div class="cursor-effect"></div>
@@ -18,7 +19,12 @@
             <a href="#" class="nav-logo">
                 <span class="gradient-text">آسان</span>گام
             </a>
-            <div class="nav-menu">
+            <div class="hamburger" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-menu" id="mobile-menu">
                 <a href="#about" class="nav-link">درباره ما</a>
                 <a href="#features" class="nav-link">امکانات</a>
                 <a href="#pricing" class="nav-link">تعرفه‌ها</a>
@@ -32,65 +38,54 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                
                 <!-- تایتل ثابت (خارج از اسلایدر) -->
                 <h1 class="hero-title smaller animate__animated animate__fadeInLeft">
-                    <span>پیشنهادات ویژه ✨</span>
-                    <span class="gradient-text animate-float">منوهای فصلی</span>
-                    <span>آرمین گیه</span>
+                    <span class="gradient-text animate-float">چیزی که دنبالش بودی همینجاس!</span>
                 </h1>
                 
-                <!-- اسلایدشو فقط برای توضیحات -->
-                <div class="slider">
-                    <div class="slide active">
-                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
-                            طراحی منو با قابلیت پیشنهاد هوشمند
-                        </p>
+                <div class="hero-flex-container">
+                    <!-- اسلایدشو فقط برای توضیحات -->
+                    <div class="slider">
+                        <div class="slider-wrapper">
+                            <div class="slider-content">
+                                <div class="slide active">
+                                    <div class="slide-wrapper">
+                                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
+                                            طراحی منو با قابلیت پیشنهاد هوشمند
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="slide">
+                                    <div class="slide-wrapper">
+                                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
+                                            سیستم سفارش آنلاین با هوش مصنوعی
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="slide">
+                                    <div class="slide-wrapper">
+                                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
+                                            منوهای متناسب با فصل با هوش مصنوعی
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-nav">
+                                <button class="nav-btn active" data-slide="0"></button>
+                                <button class="nav-btn" data-slide="1"></button>
+                                <button class="nav-btn" data-slide="2"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-illustration">
+                        <div class="ai-interface animate-float">
+                            <div class="ai-message user">من یه نوشیدنی گرم و شکلاتی میخوام...</div>
+                            <div class="ai-message bot">پیشنهاد ما: موکا دبل شکلات با خامه اختصاصی ☕️</div>
+                        </div>
                         
-                        <div class="slider-nav">
-                            <button class="nav-btn active" data-slide="0"></button>
-                            <button class="nav-btn" data-slide="1"></button>
-                            <button class="nav-btn" data-slide="2"></button>
-                        </div>
-
-                        <div class="cta-group animate__animated animate__fadeIn animate__delay-2s">
-                            <a href="#portfolio" class="cta-btn primary animate-hover">
-                                <i class="material-icons">visibility</i>
-                                مشاهده دمو
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="slide">
-                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
-                            سیستم سفارش آنلاین با هوش مصنوعی
-                        </p>
-
-                        <div class="slider-nav">
-                            <button class="nav-btn" data-slide="0"></button>
-                            <button class="nav-btn active" data-slide="1"></button>
-                            <button class="nav-btn" data-slide="2"></button>
-                        </div>
-
-                        <div class="cta-group animate__animated animate__fadeIn animate__delay-2s">
-                            <a href="#portfolio" class="cta-btn primary animate-hover">
-                                <i class="material-icons">visibility</i>
-                                مشاهده دمو
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="slide">
-                        <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
-                            منوهای متناسب با فصل با هوش مصنوعی
-                        </p>
-
-                        <div class="slider-nav">
-                            <button class="nav-btn" data-slide="0"></button>
-                            <button class="nav-btn" data-slide="1"></button>
-                            <button class="nav-btn active" data-slide="2"></button>
-                        </div>
-
                         <div class="cta-group animate__animated animate__fadeIn animate__delay-2s">
                             <a href="#portfolio" class="cta-btn primary animate-hover">
                                 <i class="material-icons">visibility</i>
