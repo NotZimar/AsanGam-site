@@ -396,6 +396,117 @@
         margin-right: auto !important;
         float: none !important;
     }
+
+    /* Hero section */
+    .hero-flex-container {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    
+    .hero-title.smaller {
+        font-size: 2rem;
+        line-height: 1.4;
+    }
+    
+    .hero-static-text {
+        font-size: 1.2rem;
+    }
+    
+    /* AI Interface - centered */
+    .hero-illustration.centered {
+        max-width: 90%;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .ai-interface {
+        padding: 1.5rem;
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    
+    /* دکمه مشاهده دمو */
+    .cta-group {
+        margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cta-btn.primary {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+
+    /* Remove search button styles */
+    .ai-message-container, .search-btn {
+        display: none;
+    }
+
+    /* Domain search */
+    .domain-search-box {
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
+        order: 1;
+    }
+    
+    .search-wrapper {
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    .domain-search-input {
+        width: 100%;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .domain-search-btn {
+        width: 100%;
+        border-radius: 50px;
+    }
+
+    .domain-suggestions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .domain-item {
+        width: 100%;
+    }
+
+    /* پیام کاربر با دکمه در موبایل */
+    .ai-message.user {
+        flex-direction: row;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        gap: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .ai-message.user span {
+        flex: 0 1 auto;
+        min-width: 0;
+        padding: 1rem;
+    }
+    
+    .ai-message.user .cta-btn {
+        flex: 0 0 auto;
+        font-size: 0.85rem;
+        padding: 0 1rem;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
 }
 
 /* استایل برای آیفون XR و موبایل‌های کوچکتر */
@@ -531,6 +642,37 @@
     }
 }
 
+@media (max-width: 480px) {
+    .hero-title.smaller {
+        font-size: 1.5rem;
+    }
+    
+    .hero-static-text {
+        font-size: 1rem;
+    }
+    
+    .ai-interface {
+        padding: 1rem;
+    }
+    
+    .hero-illustration .cta-group {
+        margin-top: 1rem;
+    }
+
+    .domain-search-box, 
+    .ai-interface {
+        padding: 1rem;
+    }
+    
+    .hero-illustration .cta-group {
+        margin-top: 1rem;
+    }
+
+    .search-btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+        
 /* فیکس‌های ضروری */
 .no-scroll {
     overflow: hidden !important;
@@ -687,14 +829,44 @@
     padding: 15px;
     left: 0 !important;
     position: relative !important;
+    }
+
+    .ai-message {
+        text-align: center;
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+    }
+
 }
 
-.ai-message {
-    text-align: center;
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    float: none !important;
+
+
+
+@media (max-width: 360px) {
+    .ai-message.user {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .ai-message.user span {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 0;
+    }
+    
+    .ai-message.user .cta-btn {
+        align-self: stretch;
+        width: 100%;
+        padding: 0.7rem 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: none;
+        justify-content: center;
+    }
 } 

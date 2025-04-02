@@ -144,10 +144,9 @@ body {
 
 .hero-flex-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 6rem;
-    margin-top: 6rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
     position: relative;
 }
 
@@ -185,18 +184,25 @@ body {
 .hero-illustration {
     flex: 1;
     max-width: 40%;
-    margin-top: -12rem;
-    margin-left: -12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+/* センタリング用のクラス */
+.hero-illustration.centered {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-illustration .cta-group {
-    margin-top: 1.5rem;
-    justify-content: center;
+    margin-top: auto;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .slide {
@@ -964,22 +970,175 @@ section {
 
 /* استایل برای تایتل ثابت کوچکتر - کاهش فاصله پایین */
 .hero-title.smaller {
-    font-size: 3.2rem;
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 10;
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
+
+/* متن ثابت بالای جستجوی دامنه */
+.hero-static-text {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* باکس جستجوی دامنه */
+.domain-search-box {
+    max-width: 55%;
+    flex: 1;
+    background-color: rgba(15, 10, 29, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+}
+
+/* جستجوی دامنه - اضافه کردن wrapper */
+.search-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+/* فیلد جستجوی دامنه - اصلاح برای RTL */
+.domain-search-input {
+    width: 75%;
+    padding: 1rem 1.5rem;
+    border-radius: 0 50px 50px 0;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    float: none;
+}
+
+/* دکمه جستجو - اصلاح برای RTL */
+.domain-search-btn {
+    width: 25%;
+    padding: 1rem 1.5rem;
+    border-radius: 50px 0 0 50px;
+    border: none;
+    background: var(--gradient);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    float: none;
+}
+
+.domain-search-btn:hover {
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    transform: translateY(-2px);
+}
+
+/* پیشنهادهای دامنه */
+.domain-suggestions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.domain-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    width: 30%;
+    transition: all 0.3s ease;
+}
+
+.domain-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.domain-ext {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.domain-arrow {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.domain-price {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* لینک تخفیف - اصلاح برای RTL */
+.discount-link {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.discount-btn {
+    display: inline-flex;
+    align-items: center;
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.discount-btn i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+    font-size: 1rem;
+    transform: rotate(180deg);
+}
+
+.discount-btn:hover {
+    color: var(--primary);
+    transform: translateX(-5px);
+}
+
+/* حذف استایل‌های اسلایدر که دیگر استفاده نمی‌شوند */
+.slider, .slider-wrapper, .slider-content, .slide {
+    display: none;
+}
+
+/* AI Interface */
 .ai-interface {
     background: var(--glass);
     border-radius: 12px;
     padding: 2rem;
     width: 100%;
-    max-width: 380px;
+    max-width: 550px;
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+
+/* دکمه مشاهده دمو */
+.cta-group {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-btn.primary {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+/* کانتینر پیام و دکمه جستجو */
+.ai-message-container {
+    display: none;
 }
 
 .ai-message {
@@ -993,9 +1152,28 @@ section {
 }
 
 .ai-message.user {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--primary);
-    margin-bottom: 1.5rem; /* فاصله بیشتر از پیام قبلی */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ai-message.user span {
+    flex: 1;
+    padding: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-message.user .cta-btn {
+    padding: 0.5rem 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ai-message.bot {
@@ -1279,6 +1457,20 @@ section {
         visibility: visible !important;
         opacity: 1 !important;
         transform: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-interface {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 414px) {
+    .ai-interface {
+        max-width: 90%;
+        margin: 0 auto 1.5rem;
     }
 }
 
