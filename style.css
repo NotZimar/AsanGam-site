@@ -1159,7 +1159,16 @@ section {
     border-radius: 15px;
     overflow: hidden;
 }
-
+@media only screen and (min-width: 800px) {
+    .ai-message.user span {
+    flex: 1;
+    padding: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    
+}
 .ai-message.user span {
     flex: 1;
     padding: 1rem;
@@ -1475,3 +1484,13 @@ section {
 }
 
 
+@font-face {
+    font-family: 'AppleEmoji';
+    src: url('fonts/ios\ emoji.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .emoji {
+    font-family: 'AppleEmoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  }
