@@ -8,12 +8,17 @@
     --glass: rgba(255, 255, 255, 0.05);
     --border: rgba(255, 255, 255, 0.1);
 }
-
+@font-face {
+    font-family: 'Vazir';
+    src: url('fonts/Vazir-Medium.ttf') format('truetype');
+    /* font-weight: normal;
+    font-style: normal; */
+  }
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Vazirmatn', sans-serif;
+    font-family: 'Vazir';
 }
 
 html {
@@ -87,6 +92,7 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
+
 }
 
 .nav-link {
@@ -103,7 +109,6 @@ body {
 
 /* استایل همبرگر منو (پنهان در دسکتاپ) */
 .hamburger {
-    display: none;
     cursor: pointer;
 }
 
@@ -1196,13 +1201,12 @@ section {
 
 /* استایل دکمه همبرگر - کاملاً بازنویسی شده */
 .hamburger {
-    display: none;
     width: 30px;
     height: 24px;
     position: relative;
     cursor: pointer;
     z-index: 1005;
-    margin-left: 15px;
+    margin-left: 2vw;
 }
 
 .hamburger span {
@@ -1261,9 +1265,9 @@ section {
     
     .nav-menu {
         position: fixed;
-        right: -100%;
+        left: -100%;
         top: 0;
-        width: 250px;
+        width: 20%;
         height: 100vh;
         background-color: rgba(15, 10, 29, 0.98);
         backdrop-filter: blur(10px);
@@ -1273,8 +1277,8 @@ section {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        transition: left 0.4s ease;
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
     }
     
     .nav-menu.active {
