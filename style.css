@@ -49,6 +49,113 @@ body {
 .cursor-effect.visible {
     opacity: 1;
 }
+
+
+.mac-dock {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(100, 100, 160, 0.1);
+    border-radius: 30px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    z-index: 999;
+  }
+  .dock-icon:hover {
+    transform: scale(1.15);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0px 30px rgba(155, 126, 222, 0.25);
+  }
+  .dock-icon {
+    width: 68px;
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .tooltip {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .dock-icon:hover .tooltip {
+    opacity: 1;
+  }
+  .dock-icon img {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    opacity: 0.9;
+  }
+
+
+
+  section.subscription-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px;
+  }
+
+  .subscription-section {
+    background-color: rgba(100, 100, 160, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    justify-content: center;
+  }
+
+  .sub-box {
+    width: 180px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .sub-box:hover {
+    transform: scale(1.08);
+    background-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 40px rgba(155, 126, 222, 0.25);
+  }
+
+  .sub-box .icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  .sub-box .duration {
+    font-size: 17px;
+    opacity: 0.8;
+  }
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -62,60 +169,7 @@ body {
     background-clip: text;
 }
 
-/* ناوبری با لبه پایینی محو شده بهتر */
-.nav {
-    width: 100%;
-    background-color: rgba(15, 10, 29, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.nav-logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-
-}
-
-.nav-link {
-    margin: 0 15px;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #C4B1FE;
-}
-
 /* استایل همبرگر منو (پنهان در دسکتاپ) */
-.hamburger {
-    cursor: pointer;
-}
-
-.hamburger span {
-    background-color: #fff;
-    transition: all 0.3s ease;
-}
 
 /* بخش هرو با عکس ثابت */
 .hero {
@@ -151,39 +205,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 0rem;
     position: relative;
-}
-
-.slider {
-    float: right;
-    flex: 1;
-    max-width: 48%;
-    position: relative;
-    min-height: 280px;
-    margin-top: 30px;
-}
-
-.slider-wrapper {
-    position: relative;
-}
-
-.slide-wrapper {
-    display: flex;
-    align-items: flex-start;
-}
-
-.slider-content {
-    position: relative;
-    width: 100%;
-    min-height: 200px;
-    cursor: grab;
-    touch-action: pan-y;
-    user-select: none;
-}
-
-.slider-content:active {
-    cursor: grabbing;
 }
 
 .hero-illustration {
@@ -209,24 +232,6 @@ body {
     display: flex;
     justify-content: center;
 }
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    min-height: 250px;
-    padding-top: 1.5rem;
-    padding-right: 25px; /* Create space for nav buttons for RTL layout */
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
 .hero-title {
     font-size: 3.5rem;
     line-height: 1.3em;
@@ -253,36 +258,7 @@ body {
     gap: 1rem;
 }
 
-/* حذف کانتینر قبلی */
-.slider-nav-container {
-    display: none;
-}
 
-/* استایل جدید برای دکمه‌های ناوبری */
-.slider-nav {
-    position: absolute;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 12px;
-    top: 1.2rem;
-    right: -30px;
-    z-index: 6;
-}
-
-.nav-btn {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--light);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nav-btn.active {
-    background: var(--light);
-    transform: scale(1.4);
-}
 
 /* ویژگی‌ها */
 
@@ -357,107 +333,11 @@ body {
 /* رسپانسیو */
 @media (max-width: 768px) {
     /* نمایش منوی همبرگر */
-    .hamburger {
-        display: block;
-    }
-    
-    .nav {
-        padding: 1rem 0;
-        background-color: rgba(15, 10, 29, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    
-    .nav .container {
-        justify-content: space-between;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        right: -100%;
-        top: 0;
-        width: 250px;
-        height: 100vh;
-        background-color: rgba(15, 10, 29, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 70px 0 20px;
-        z-index: 1004;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    .nav-link {
-        margin: 8px 0;
-        padding: 12px 20px;
-        width: 85%;
-        text-align: center;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        display: block;
-    }
-    
-    .nav-link:hover {
-        background: rgba(155, 126, 222, 0.1);
-    }
-    
+
     .no-scroll {
         overflow: hidden;
     }
-    
-    /* تنظیمات اسلایدر */
-    .slider-nav {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        top: auto;
-        right: auto;
-        justify-content: center;
-        margin-top: 15px;
-    }
-    
-    .slide {
-        min-height: 150px;
-    }
-    
-    /* مخفی کردن منوی اصلی و نمایش به صورت فول اسکرین در حالت فعال */
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: rgba(7, 3, 19, 0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: 0.3s ease;
-        z-index: 1001;
-        padding: 4rem 0;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    /* استایل لینک‌های منو */
-    .nav-link {
-        padding: 0.5rem 2rem;
-        width: 100%;
-        text-align: center;
-    }
-    
+
     /* تنظیمات هرو */
     .hero-flex-container {
         flex-direction: column;
@@ -465,7 +345,7 @@ body {
         margin-top: 3rem;
     }
     
-    .slider, .hero-illustration {
+    .hero-illustration {
         max-width: 100%;
         float: none;
     }
@@ -505,39 +385,12 @@ body {
     }
     
     /* اسلایدر با فاصله مناسب */
-    .slider {
-        float: none;
-        margin-bottom: 2rem;
-    }
-    
-    /* حذف محدودیت های width روی اسلایدر در موبایل */
-    .slider-content {
-        width: 100%;
-    }
-    
-    /* دکمه اسلایدر با فاصله مناسب */
-    .slider-nav {
-        right: -12px;
-    }
+
     
     /* اصلاح فاصله‌ها برای ai-interface */
     .ai-interface {
         max-width: 90%;
         margin: 0 auto 1.5rem;
-    }
-    
-    /* اصلاح نسبت‌ها در کارت‌ها */
-    .portfolio-card {
-        aspect-ratio: 16/9;
-    }
-    
-    /* نمایش محتویات کارت با hover */
-    .portfolio-info {
-        opacity: 0.8; /* کمی شفاف‌تر در حالت عادی */
-    }
-    
-    .portfolio-card:hover .portfolio-info {
-        opacity: 1;
     }
     
     /* کاهش اندازه آیکون‌ها متناسب با اندازه موبایل */
@@ -575,38 +428,10 @@ body {
         display: inline-block;
     }
     
-    /* بهبود اسلایدر */
-    .slider-content {
-        min-height: 120px;
-    }
-    
-    .slide {
-        min-height: 120px;
-        display: flex;
-        align-items: center;
-    }
-    
+
     /* کانتینر و ناوبری */
     .container {
         padding: 0 0.8rem;
-    }
-    
-    .nav {
-        padding: 0.7rem 0;
-    }
-    
-    .nav-logo {
-        font-size: 1.3rem;
-    }
-    
-    /* منوی همبرگر و ناوبری */
-    .nav-menu {
-        width: 80%;
-    }
-    
-    .nav-link {
-        font-size: 1.1rem;
-        padding: 0.5rem 1.5rem;
     }
     
     /* هرو و تایتل - شبیه به دسکتاپ */
@@ -625,24 +450,6 @@ body {
         margin-bottom: 1.2rem;
     }
     
-    .slider {
-        min-height: 180px;
-        margin-top: 0;
-    }
-    
-    .slide {
-        min-height: 120px;
-    }
-    
-    .slider-nav {
-        gap: 8px;
-        right: -20px;
-    }
-    
-    .nav-btn {
-        width: 8px;
-        height: 8px;
-    }
     
     /* اینترفیس هوش مصنوعی */
     .ai-interface {
@@ -728,46 +535,7 @@ body {
         font-size: 0.9rem;
     }
     
-    /* فیلتر نمونه کارها */
-    .portfolio-filter {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 0.8rem;
-        justify-content: flex-start;
-        gap: 0.4rem;
-    }
-    
-    .portfolio-filter .cta-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        margin-bottom: 0;
-        width: auto;
-    }
-    
-    /* گرید نمونه کارها - شبیه به دسکتاپ */
-    .portfolio-grid {
-        gap: 1.2rem;
-    }
-    
-    .portfolio-card {
-        aspect-ratio: 16/9;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: 0.3s ease;
-    }
-    
-    .portfolio-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .portfolio-info h3 {
-        font-size: 1.2rem;
-    }
-    
-    .portfolio-info p {
-        font-size: 0.9rem;
-    }
-    
+
     /* غیرفعال کردن افکت موس */
     .cursor-effect {
         display: none;
@@ -788,156 +556,14 @@ body {
     }
 }
 
-.portfolio *{
-    padding-bottom: 0;
-    
-}
+
 section {
     margin-bottom: 5vh;
     
 }
 
-/* استایل دکمه‌های فیلتر */
-.portfolio-filter {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
 
-.portfolio-filter .cta-btn {
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
 
-.portfolio-filter .cta-btn.active {
-    background: var(--gradient);
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(155, 126, 222, 0.4);
-}
-
-/* گالری نمونه کارها */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.portfolio-item {
-    padding-bottom: 0;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-10px);
-}
-.portfolio-card {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9; /* نسبت ثابت برای کارت */
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    padding: 0; /* اطمینان از عدم وجود پدینگ */
-    background-size: cover;
-    background-position: center;
-}
-
-.portfolio-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    z-index: 0;
-}
-
-.portfolio-info {
-    position: absolute;
-    inset: 0; /* پوشاندن کل فضای کارت */
-    background: rgba(15, 10, 29, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    opacity: 1;
-    transition: all 0.3s ease;
-}
-
-/* مخفی کردن پاراگراف و دکمه در حالت عادی */
-.portfolio-info p,
-.portfolio-info .cta-btn {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-/* انیمیشن هاور برای کل کارت با گلو افکت قوی‌تر */
-.portfolio-card:hover {
-    transform: scale(1.03);
-    box-shadow: 
-        0 0 20px rgba(184, 160, 240, 0.5),
-        0 0 40px rgba(184, 160, 240, 0.4),
-        0 0 80px rgba(184, 160, 240, 0.3); /* گلو افکت درخشان‌تر در اطراف کارت */
-    border: 1px solid rgba(196, 177, 254, 0.5); /* لبه روشن‌تر */
-    z-index: 2; /* اطمینان از نمایش کارت روی سایر عناصر */
-}
-
-.portfolio-card:hover .portfolio-info {
-    background: rgba(15, 10, 29, 0.85); /* تیره‌تر شدن در هنگام هاور */
-}
-
-/* نمایش پاراگراف و دکمه در حالت هاور */
-.portfolio-card:hover .portfolio-info p,
-.portfolio-card:hover .portfolio-info .cta-btn {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* تغییر رنگ دکمه در حالت هاور */
-.portfolio-card:hover .portfolio-info .cta-btn {
-    background: var(--gradient); /* استفاده از گرادیان تعریف شده در متغیرها */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    box-shadow: 0 0 15px rgba(196, 177, 254, 0.5); /* گلو افکت برای دکمه */
-}
-
-/* انیمیشن برای دکمه در هاور */
-.portfolio-card:hover .portfolio-info .cta-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 20px rgba(196, 177, 254, 0.7);
-    transition: all 0.2s ease;
-}
-
-/* استایل محتوا */
-.portfolio-info h3 {
-    color: var(--light);
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.portfolio-info p {
-    color: var(--light);
-    text-align: center;
-    margin: 0;
-}
-
-.portfolio-info .cta-btn {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 8px;
-}
 .cta-btn.small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -985,7 +611,7 @@ section {
     font-size: 1.4rem;
     color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* باکس جستجوی دامنه */
@@ -1104,18 +730,14 @@ section {
     transform: translateX(-5px);
 }
 
-/* حذف استایل‌های اسلایدر که دیگر استفاده نمی‌شوند */
-.slider, .slider-wrapper, .slider-content, .slide {
-    display: none;
-}
 
 /* AI Interface */
 .ai-interface {
     background: var(--glass);
-    border-radius: 12px;
+    border-radius: 35px; 
     padding: 2rem;
     width: 100%;
-    max-width: 550px;
+    max-width: 681px;
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -1199,105 +821,11 @@ section {
     overflow: hidden;
 }
 
-/* استایل دکمه همبرگر - کاملاً بازنویسی شده */
-.hamburger {
-    width: 30px;
-    height: 24px;
-    position: relative;
-    cursor: pointer;
-    z-index: 1005;
-    margin-left: 2vw;
-}
-
-.hamburger span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    position: absolute;
-    left: 0;
-    transition: all 0.3s ease;
-    border-radius: 3px;
-}
-
-.hamburger span:nth-child(1) {
-    top: 0;
-}
-
-.hamburger span:nth-child(2) {
-    top: 10px;
-}
-
-.hamburger span:nth-child(3) {
-    top: 20px;
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg);
-    top: 10px;
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg);
-    top: 10px;
-}
 
 /* استایل منوی موبایل - کاملاً بازنویسی شده */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    
-    .nav {
-        padding: 1rem 0;
-        background-color: rgba(15, 10, 29, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    
-    .nav .container {
-        justify-content: space-between;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 0;
-        width: 20%;
-        height: 100vh;
-        background-color: rgba(15, 10, 29, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 70px 0 20px;
-        z-index: 1004;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        transition: left 0.4s ease;
-        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    .nav-link {
-        margin: 8px 0;
-        padding: 12px 20px;
-        width: 85%;
-        text-align: center;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        display: block;
-    }
-    
-    .nav-link:hover {
-        background: rgba(155, 126, 222, 0.1);
-    }
+
+
     
     .no-scroll {
         overflow: hidden;
@@ -1310,13 +838,7 @@ section {
         margin-top: 30px;
     }
     
-    .slider {
-        float: none;
-        max-width: 100%;
-        min-height: 180px;
-        margin-bottom: 20px;
-    }
-    
+
     .hero-illustration {
         max-width: 100%;
         margin: 0;
@@ -1331,14 +853,6 @@ section {
     /* تنظیمات کلی */
     .container {
         padding: 0 15px;
-    }
-    
-    .nav {
-        padding: 12px 0;
-    }
-    
-    .nav-logo {
-        font-size: 1.5rem;
     }
     
     /* هرو سکشن و تایتل */
@@ -1357,17 +871,6 @@ section {
     .hero-description {
         font-size: 1.1rem;
         margin-bottom: 10px;
-    }
-    
-    .slider-nav {
-        right: -15px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    .nav-btn {
-        width: 8px;
-        height: 8px;
     }
     
     /* AI Interface - چیدمان دسکتاپ */
@@ -1415,63 +918,9 @@ section {
         font-size: 1rem;
     }
     
-    .portfolio-filter {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-        gap: 10px;
-    }
-    
-    .portfolio-filter .cta-btn {
-        padding: 8px 15px;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-    
-    .portfolio-grid {
-        gap: 20px;
-    }
-    
-    .portfolio-card {
-        aspect-ratio: 16/9;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    .portfolio-info h3 {
-        font-size: 1.2rem;
-    }
-    
-    .portfolio-info p {
-        font-size: 0.9rem;
-        margin: 8px 0;
-    }
 }
-
 /* ویژه موبایل - اطمینان از نمایش پورتفولیو */
-@media (max-width: 768px) {
-    .portfolio {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    .portfolio-item {
-        visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    
-    .portfolio-info,
-    .portfolio-info h3,
-    .portfolio-info p,
-    .portfolio-info .cta-btn {
-        visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-}
+
 
 @media (max-width: 768px) {
     .ai-interface {
@@ -1487,14 +936,3 @@ section {
     }
 }
 
-
-@font-face {
-    font-family: 'AppleEmoji';
-    src: url('fonts/ios\ emoji.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  .emoji {
-    font-family: 'AppleEmoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-  }

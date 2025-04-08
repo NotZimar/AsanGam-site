@@ -13,27 +13,36 @@
 <body>
     <div class="cursor-effect"></div>
 
-    <!-- ناوبری -->
-    <nav class="nav animate__animated animate__fadeInDown">
-        <div class="container">
-            <a href="#" class="nav-logo">
-                <span class="gradient-text">آسان</span>گام
-            </a>
-            <div class="nav-menu" id="mobile-menu">
-                <a href="#about" class="nav-link">درباره ما</a>
-                <a href="#features" class="nav-link">امکانات</a>
-                <a href="#pricing" class="nav-link">تعرفه‌ها</a>
-                <a href="#portfolio" class="nav-link">نمونه کارها</a>
-                <a href="#contact" class="nav-link">تماس</a>
-            </div>
-            <div class="hamburger" id="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
 
+    <div class="mac-dock">
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/folder-invoices.png" alt="folder"/>
+          <div class="tooltip">Files</div>
         </div>
-    </nav>
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/phone.png" alt="phone"/>
+          <div class="tooltip">Call</div>
+        </div>
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/groups.png" alt="groups"/>
+          <div class="tooltip">Contacts</div>
+        </div>
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/settings.png" alt="settings"/>
+          <div class="tooltip">Settings</div>
+        </div>
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/hammer.png" alt="tools"/>
+          <div class="tooltip">Tools</div>
+        </div>
+        <div class="dock-icon">
+          <img src="https://img.icons8.com/ios-filled/50/user.png" alt="user"/>
+          <div class="tooltip">Profile</div>
+        </div>
+        <div class="dock-icon"></div>
+        <div class="dock-icon"></div>
+      </div>
+    
 
     <!-- بخش هرو با عکس ثابت -->
     <section class="hero">
@@ -43,11 +52,9 @@
                 <h1 class="hero-title smaller animate__animated animate__fadeInLeft">
                     <span class="gradient-text animate-float">با آسانگام، آسان گام بردارید!</span>
                 </h1>
-                <br>
                 <!-- متن ثابت جایگزین اسلایدر -->
                 <p class="hero-static-text animate__animated animate__fadeIn animate__delay-1s">
-                    
-                    <span class="emoji">👇🏻</span>خودت امتحان کن<span class="emoji">👇🏻</span>
+                    خودت امتحان کن
                 </p>
                 
                 <div class="hero-flex-container">
@@ -71,66 +78,33 @@
         </div>
     </section>
 
-    <!-- بخش نمونه کارها -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title gradient-text">نمونه کارهای ما</h2>
-                <p class="section-subtitle">پروژه‌های اجرا شده در رستوران‌ها و کافه‌ها</p>
-            </div>
-            
-            <!-- دکمه‌های فیلتر -->
-            <div class="portfolio-filter">
-                <button class="cta-btn primary active" data-filter="all">همه</button>
-                <button class="cta-btn secondary" data-filter="restaurant">
-                    <i class="material-icons">restaurant</i>
-                    رستوران‌ها
-                </button>
-                <button class="cta-btn secondary" data-filter="cafe">
-                    <i class="material-icons">cinema</video></i>
-                    تدوین ویدئو
-                </button>
-                <button class="cta-btn secondary" data-filter="logo design">
-                    <i class="material-icons">brush</i>
-                    طراحی لوگو
-                </button>
-            </div>
+    <!-- سکشن اشتراک با عنوان -->
+    <section class="subscription-container">
+        <div class="section-header animate__animated animate__fadeInUp">
+        <h2 class="section-title gradient-text">تعرفه اشتراک ها</h2>
+        <p class="section-subtitle">اینجا مدت زمان اشتراک ها قرار میگیره</p>
+        </div>
+        <br>
 
-            <!-- گالری نمونه کارها -->
-            <div class="portfolio-grid">
-                <!-- نمونه رستوران -->
-                <div class="portfolio-item restaurant animate__animated" data-animate="animate__fadeInUp">
-                    <div class="portfolio-card" style="background-image: url('images/restaurant-1.jpg');">
-                        <div class="portfolio-info">
-                            <h3>رستوران لاکچری</h3>
-                            <p>طراحی منو با قابلیت پیشنهاد هوشمند</p>
-                            <button class="cta-btn small animate-hover">
-                                <i class="material-icons">visibility</i>
-                                مشاهده دمو
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- نمونه کافه -->
-                <div class="portfolio-item cafe animate__animated" data-animate="animate__fadeInUp">
-                    <div class="portfolio-card">
-                        <img src="images/cafe-1.jpg" alt="منوی کافه">
-                        <div class="portfolio-info">
-                            <h3>کافه مدرن</h3>
-                            <p>سیستم سفارش آنلاین با هوش مصنوعی</p>
-                            <button class="cta-btn small animate-hover">
-                                <i class="material-icons">visibility</i>
-                                مشاهده دمو
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="subscription-section">
+        <div class="sub-box animate__animated">
+            <div class="icon">🕐</div>
+            <div class="duration">1 ماهه</div>
+        </div>
+        <div class="sub-box animate__animated">
+            <div class="icon">🕒</div>
+            <div class="duration">3 ماهه</div>
+        </div>
+        <div class="sub-box animate__animated">
+            <div class="icon">🕕</div>
+            <div class="duration">6 ماهه</div>
+        </div>
+        <div class="sub-box animate__animated">
+            <div class="icon">📅</div>
+            <div class="duration">1 ساله</div>
+        </div>
         </div>
     </section>
-
-
     <!-- سایر بخش‌ها -->
     <section class="about" id="about">
         <div class="container">
