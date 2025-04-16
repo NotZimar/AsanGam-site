@@ -57,10 +57,10 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(100, 100, 160, 0.1);
-    border-radius: 30px;
+    border-radius: 3vh;
     padding: 15px;
     display: flex;
-    gap: 15px;
+    gap: 1vw;
     backdrop-filter: blur(12px);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
     z-index: 999;
@@ -71,10 +71,10 @@ body {
     box-shadow: 0 0px 30px rgba(155, 126, 222, 0.25);
   }
   .dock-icon {
-    width: 68px;
-    height: 68px;
+    width: 4vw;
+    height: 4vw;
     background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
+    border-radius: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,10 +97,9 @@ body {
     opacity: 1;
   }
   .dock-icon img {
-    width: 40px;
-    height: 40px;
-    filter: invert(1);
-    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
   }
 
 
@@ -113,10 +112,10 @@ body {
   }
 
   .subscription-section {
-    background-color: rgba(100, 100, 160, 0.15);
+    background-color: rgba(255, 255, 255, 0.19);
     backdrop-filter: blur(12px);
     padding: 50px;
-    border-radius: 50px;
+    border-radius: 66px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-wrap: wrap;
@@ -127,8 +126,8 @@ body {
   .sub-box {
     width: 180px;
     height: 180px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 30px;
+    background-color: rgba(141, 116, 199, 1);
+    border-radius: 55px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,7 +140,7 @@ body {
 
   .sub-box:hover {
     transform: scale(1.08);
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: rgb(156, 137, 199);
     box-shadow: 0 16px 40px rgba(155, 126, 222, 0.25);
   }
 
@@ -587,6 +586,7 @@ section {
 .section-header h2{
     margin-bottom: 1vh;
     font-size: 2em;
+
 }
 .section-header p{
     font-size: 1.5em;
@@ -601,14 +601,14 @@ section {
 
 /* استایل برای تایتل ثابت کوچکتر - کاهش فاصله پایین */
 .hero-title.smaller {
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
 /* متن ثابت بالای جستجوی دامنه */
 .hero-static-text {
-    font-size: 1.4rem;
+    font-size: 2.4rem;
     color: rgba(255, 255, 255, 0.9);
     text-align: center;
     margin-bottom: 1rem;
@@ -733,12 +733,11 @@ section {
 
 /* AI Interface */
 .ai-interface {
-    background: var(--glass);
+    background-color: rgba(217, 217, 217, 0.6) ;
     border-radius: 35px; 
     padding: 2rem;
     width: 100%;
     max-width: 681px;
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
@@ -769,7 +768,7 @@ section {
 }
 
 .ai-message {
-    padding: 1rem;
+    padding: 1.3rem 1rem;
     margin-bottom: 1.5rem; /* افزایش فاصله بین پیام‌ها */
     border-radius: 15px;
     position: relative;
@@ -935,4 +934,42 @@ section {
         margin: 0 auto 1.5rem;
     }
 }
+
+.search-container {
+    background: #1a1a1a;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    padding: 2vh 1vw;
+    max-width: 40vw;
+    float: right;
+    margin-bottom: 4vh;
+    
+  }
+
+  .search-button {
+    background-color: #b58dff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    left: 0;
+  }
+
+  .search-text {
+    color: #ccc;
+    font-size: 100%;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:clip;
+    padding-left: 13vw;
+  }
 
