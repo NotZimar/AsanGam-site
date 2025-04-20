@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="slideshow.css">
 </head>
 <body>
     <div class="cursor-effect"></div>
@@ -47,102 +48,155 @@
         <div class="dock-icon"></div>
       </div>
     
-
+    <section class="bg" style="background-image: url(images/background.jpg);">
     <!-- بخش هرو با عکس ثابت -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <!-- تایتل اصلی -->
-                <h1 class="hero-title smaller animate__animated animate__fadeInLeft">
-                    <span class="gradient-text animate-float">با آسانگام، آسان گام بردارید!</span>
-                </h1>
-                <!-- متن ثابت جایگزین اسلایدر -->
-                <p class="hero-static-text animate__animated animate__fadeIn animate__delay-1s">
-                    خودت امتحان کن
-                </p>
-                
-                <div class="hero-flex-container">
-                    <!-- اینترفیس هوش مصنوعی -->
-                    <div class="hero-illustration centered">
-                        <a href="#" style="text-decoration: none; color:white;">
-                            <div class="ai-interface">
-                                <div class="search-container">
-                                    
-                                    <p class="search-text">من یه نوشیدنی گرم و شکلاتی میخوام...</p>
-                                    <button class="search-button animate-hover">
-                                        <i class="material-icons">search</i> <!-- تغییر آیکون به ذره‌بین -->
-                                        جستجو
-                                    </button>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- تایتل اصلی -->
+                    <h1 class="hero-title smaller animate__animated animate__fadeInLeft">
+                        <span class="gradient-text animate-float">با آسانگام، آسان گام بردارید!</span>
+                    </h1>
+                    <!-- متن ثابت جایگزین اسلایدر -->
+                    <p class="hero-static-text animate__animated animate__fadeIn animate__delay-1s">
+                        خودت امتحان کن
+                    </p>
+                    
+                    <div class="hero-flex-container">
+                        <!-- اینترفیس هوش مصنوعی -->
+                        <div class="hero-illustration centered">
+                            <a href="#" style="text-decoration: none; color:white;">
+                                <div class="ai-interface">
+                                    <div class="search-container">
+                                        
+                                        <p class="search-text">من یه نوشیدنی گرم و شکلاتی میخوام...</p>
+                                        <button class="search-button animate-hover">
+                                            <i class="material-icons">search</i> <!-- تغییر آیکون به ذره‌بین -->
+                                            جستجو
+                                        </button>
+                                    </div>
+                                    <div class="ai-message bot">پیشنهاد ما: موکا دبل شکلات با خامه اختصاصی <span class="emoji">☕️</span></div>
                                 </div>
-                                <div class="ai-message bot">پیشنهاد ما: موکا دبل شکلات با خامه اختصاصی <span class="emoji">☕️</span></div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
+
+    <!-- بخش سایر خدمات با اسلایدر -->
 
     <!-- سکشن اشتراک با عنوان -->
-    <section class="subscription-container">
-        <div class="section-header animate__animated animate__fadeInUp" style="    border: #F8F7FC 2px;">
-        <h2 class="section-title gradient-text">تعرفه اشتراک ها</h2>
-        <p class="section-subtitle">اینجا مدت زمان اشتراک ها قرار میگیره</p>
-        </div>
-        <br>
+    <section class="bg" style="background-image: url(images/background2.jpg);">
+        <section class="subscription-container">
+            <div class="section-header animate__animated animate__fadeInUp" style="border: #F8F7FC 2px;">
+                <h2 class="section-title gradient-text">تعرفه اشتراک ها</h2>
+                <p class="section-subtitle">اینجا مدت زمان اشتراک ها قرار میگیره</p>
+            </div>
+            <br>
 
-        <div class="subscription-section">
-        <div class="sub-box animate__animated">
-            <!-- <div class="icon">🕐</div> -->
-            <div class="duration">1 ماهه</div>
-        </div>
-        <div class="sub-box animate__animated">
-            <div class="icon">🕒</div>
-            <div class="duration">3 ماهه</div>
-        </div>
-        <div class="sub-box animate__animated">
-            <div class="icon">🕕</div>
-            <div class="duration">6 ماهه</div>
-        </div>
-        <div class="sub-box animate__animated">
-            <div class="icon">📅</div>
-            <div class="duration">1 ساله</div>
-        </div>
-        </div>
+            <div class="subscription-section">
+                <div class="sub-box animate__animated animate__fadeInUp">
+                    <div class="duration">یک ماهه</div>
+                </div>
+                <div class="sub-box animate__animated animate__fadeInUp">
+                    <div class="duration">سه ماهه</div>
+                </div>
+                <div class="sub-box animate__animated animate__fadeInUp">
+                    <div class="duration">شش ماهه</div>
+                </div>
+                <div class="sub-box animate__animated animate__fadeInUp">
+                    <div class="duration">یک ساله</div>
+                </div>
+            </div>
+        </section>
     </section>
+    <section class="bg" style="background-image: url(images/background3.jpg);">
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header animate__animated animate__fadeInUp">
+                    <h2 class="section-title gradient-text">سایر خدمات</h2>
+                    <p class="section-subtitle">توی آسانگام میتونی بهترین تجربه ی دیزاین، طراحی ،تدوین، ویرایش و سایر خدمات این چنینی رو داشته باشی</p>
+                </div>
+                
+                <div class="services-slider">
+                    <button class="slider-arrow prev-arrow"><i class="material-icons">chevron_right</i></button>
+                    
+                    <div class="services-slider-container">
+                        <div class="services-slide">
+                            <div class="service-card">
+                                <div class="service-image">
+                                    <img src="images/service-video.jpg" alt="ویرایش ویدیو">
+                                </div>
+                                <h3>ویرایش ویدیو</h3>
+                                <a href="#" class="service-btn">سفارش</a>
+                            </div>
+                        </div>
+                        
+                        <div class="services-slide active">
+                            <div class="service-card highlighted">
+                                <div class="service-image">
+                                    <img src="images/service-web.jpg" alt="طراحی سایت">
+                                </div>
+                                <h3>طراحی سایت</h3>
+                                <a href="#" class="service-btn">سفارش</a>
+                            </div>
+                        </div>
+                        
+                        <div class="services-slide">
+                            <div class="service-card">
+                                <div class="service-image">
+                                    <img src="images/service-logo.jpg" alt="طراحی لوگو">
+                                </div>
+                                <h3>طراحی لوگو</h3>
+                                <a href="#" class="service-btn">سفارش</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-arrow next-arrow"><i class="material-icons">chevron_left</i></button>
+                </div>
+            </div>
+        </section>
+    </section>
+
     <!-- سایر بخش‌ها -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header animate__animated animate__fadeInUp">
-                <h2 class="section-title gradient-text">چرا آسان گام؟</h2>
-                <p class="section-subtitle">چون آسانگام تجربه سفارش در کافه رو با هوشش<br> سریع تر، دقیق تر و دلپذیر تر میکنه</p>
+    <section class="bg" style="background-image: url(images/background4.jpg);">
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header animate__animated animate__fadeInUp">
+                    <h2 class="section-title gradient-text">چرا آسان گام؟</h2>
+                    <p class="section-subtitle">چون آسانگام تجربه سفارش در کافه رو با هوشش<br> سریع تر، دقیق تر و دلپذیر تر میکنه</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                        <div class="feature-icon">
+                            <i class="material-icons">psychology</i>
+                        </div>
+                        <h3>پیشنهادات هوشمند</h3>
+                        <p>تجزیه و تحلیل پیشرفته سلیقه مشتریان و پیشنهاد شخصی‌سازی شده</p>
+                    </div>
+                    <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                        <div class="feature-icon">
+                            <i class="material-icons">insights</i>
+                        </div>
+                        <h3>آنالیز زنده</h3>
+                        <p>گزارش‌های لحظه‌ای از پرفروش‌ترین آیتم‌ها و سودآوری</p>
+                    </div>
+                    <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
+                        <div class="feature-icon">
+                            <i class="material-icons">palette</i>
+                        </div>
+                        <h3>طراحی اختصاصی</h3>
+                        <p>منوهای دیجیتال با قابلیت تغییر تم بر اساس برندینگ شما</p>
+                    </div>
+                </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
-                    <div class="feature-icon">
-                        <i class="material-icons">psychology</i>
-                    </div>
-                    <h3>پیشنهادات هوشمند</h3>
-                    <p>تجزیه و تحلیل پیشرفته سلیقه مشتریان و پیشنهاد شخصی‌سازی شده</p>
-                </div>
-                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
-                    <div class="feature-icon">
-                        <i class="material-icons">insights</i>
-                    </div>
-                    <h3>آنالیز زنده</h3>
-                    <p>گزارش‌های لحظه‌ای از پرفروش‌ترین آیتم‌ها و سودآوری</p>
-                </div>
-                <div class="feature-card animate__animated" data-animate="animate__fadeInUp">
-                    <div class="feature-icon">
-                        <i class="material-icons">palette</i>
-                    </div>
-                    <h3>طراحی اختصاصی</h3>
-                    <p>منوهای دیجیتال با قابلیت تغییر تم بر اساس برندینگ شما</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
+
+    </section>
     <!-- اسکریپت‌ها -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>

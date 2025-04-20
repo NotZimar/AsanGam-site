@@ -73,114 +73,6 @@ class ScrollAnimator {
     }
 }
 
-class Slider {
-    constructor() {
-        this.slides = document.querySelectorAll('.slide');
-        this.navButtons = document.querySelectorAll('.nav-btn');
-        this.sliderContent = document.querySelector('.slider-content');
-        
-        if (!this.slides.length || !this.sliderContent) return;
-        
-        this.currentSlide = 0;
-        this.autoPlayInterval = null;
-        this.touchStartX = 0;
-        this.touchEndX = 0;
-        this.init();
-    }
-
-    init() {
-        // شروع اتوپلی
-        this.startAutoPlay();
-
-        // کنترل دکمه‌های ناوبری
-        this.navButtons.forEach((button, index) => {
-            button.addEventListener('click', () => this.goToSlide(index));
-        });
-
-        // اضافه کردن پشتیبانی از swipe
-        this.setupSwipeSupport();
-    }
-
-    setupSwipeSupport() {
-        // تشخیص لمس برای موبایل
-        this.sliderContent.addEventListener('touchstart', (e) => {
-            this.touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-        
-        this.sliderContent.addEventListener('touchend', (e) => {
-            this.touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe();
-        }, {passive: true});
-
-        // تشخیص درگ برای دسکتاپ
-        this.sliderContent.addEventListener('mousedown', (e) => {
-            this.touchStartX = e.screenX;
-            // فعال کردن حالت درگ
-            this.sliderContent.style.cursor = 'grabbing';
-            document.addEventListener('mouseup', this.handleMouseUp);
-        });
-
-        const handleMouseUp = (e) => {
-            this.touchEndX = e.screenX;
-            this.handleSwipe();
-            // غیرفعال کردن حالت درگ
-            this.sliderContent.style.cursor = 'grab';
-            document.removeEventListener('mouseup', this.handleMouseUp);
-        };
-
-        this.handleMouseUp = handleMouseUp.bind(this);
-    }
-
-    handleSwipe() {
-        // محاسبه فاصله swipe
-        const swipeDistance = this.touchEndX - this.touchStartX;
-        const threshold = 50; // آستانه برای تشخیص swipe
-
-        // اگر به اندازه کافی swipe شده باشد
-        if (Math.abs(swipeDistance) > threshold) {
-            // اگر RTL است، جهت‌ها را برعکس می‌کنیم
-            if (swipeDistance > 0) {
-                // swipe به راست در RTL به معنی حرکت به اسلاید قبلی است
-                this.prevSlide();
-            } else {
-                // swipe به چپ در RTL به معنی حرکت به اسلاید بعدی است
-                this.nextSlide();
-            }
-        }
-    }
-
-    startAutoPlay() {
-        this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000);
-    }
-
-    resetAutoPlay() {
-        clearInterval(this.autoPlayInterval);
-        this.startAutoPlay();
-    }
-
-    goToSlide(index) {
-        this.slides[this.currentSlide].classList.remove('active');
-        this.navButtons[this.currentSlide].classList.remove('active');
-        
-        this.currentSlide = index;
-        
-        this.slides[this.currentSlide].classList.add('active');
-        this.navButtons[this.currentSlide].classList.add('active');
-        
-        this.resetAutoPlay();
-    }
-
-    nextSlide() {
-        const nextIndex = (this.currentSlide + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
-    }
-
-    prevSlide() {
-        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-        this.goToSlide(prevIndex);
-    }
-}
-
 class MobileMenu {
     constructor() {
         this.hamburger = document.getElementById('mobile-menu-toggle');
@@ -234,43 +126,6 @@ class MobileMenu {
     }
 }
 
-class PortfolioFilter {
-    constructor() {
-        this.filterButtons = document.querySelectorAll('.portfolio-filter button');
-        this.portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        if (!this.filterButtons.length) return;
-        
-        this.init();
-    }
-    
-    init() {
-        this.filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // حذف کلاس active از همه دکمه‌ها
-                this.filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // افزودن کلاس active به دکمه انتخاب شده
-                button.classList.add('active');
-                
-                // دریافت فیلتر انتخاب شده
-                const filter = button.dataset.filter;
-                
-                // نمایش/مخفی کردن نمونه‌ها
-                this.portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                        item.classList.add('animate__fadeIn');
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-}
 
 class SmoothScroll {
     constructor() {
@@ -310,3 +165,74 @@ document.addEventListener('DOMContentLoaded', () => {
     new SmoothScroll();
     AOS.init();
 });
+
+// اسلایدر سایر خدمات
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.services-slide');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    
+    let currentSlide = 1; // شروع با اسلاید وسط
+    
+    // تابع به‌روزرسانی اسلایدها
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            slide.querySelector('.service-card').classList.remove('highlighted');
+            
+            // محاسبه فاصله نسبت به اسلاید فعال
+            const distance = index - currentSlide;
+            
+            if (index === currentSlide) {
+                slide.classList.add('active');
+                slide.querySelector('.service-card').classList.add('highlighted');
+                slide.style.transform = 'scale(1.1) translateX(0)';
+                slide.style.opacity = '1';
+                slide.style.zIndex = '2';
+            } else if (distance < 0) {
+                // اسلایدهای سمت راست (قبلی)
+                slide.style.transform = `translateX(${60 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
+                slide.style.opacity = Math.max(0.7 - (Math.abs(distance) - 1) * 0.2, 0.3);
+                slide.style.zIndex = '1';
+            } else {
+                // اسلایدهای سمت چپ (بعدی)
+                slide.style.transform = `translateX(${-60 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
+                slide.style.opacity = Math.max(0.7 - (Math.abs(distance) - 1) * 0.2, 0.3);
+                slide.style.zIndex = '1';
+            }
+            
+            // مخفی کردن اسلایدهایی که خیلی دور هستند
+            if (Math.abs(distance) > 2) {
+                slide.style.opacity = '0';
+            }
+        });
+    }
+    
+    // رویداد کلیک دکمه قبلی
+    prevArrow.addEventListener('click', function() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlides();
+        }
+    });
+    
+    // رویداد کلیک دکمه بعدی
+    nextArrow.addEventListener('click', function() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            updateSlides();
+        }
+    });
+    
+    // کلیک روی اسلایدها
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', function() {
+            currentSlide = index;
+            updateSlides();
+        });
+    });
+    
+    // اجرای اولیه
+    updateSlides();
+});
+
