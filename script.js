@@ -191,12 +191,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 slide.style.zIndex = '2';
             } else if (distance < 0) {
                 // اسلایدهای سمت راست (قبلی)
-                slide.style.transform = `translateX(${60 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
+                slide.style.transform = `translateX(${110 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
                 slide.style.opacity = Math.max(0.7 - (Math.abs(distance) - 1) * 0.2, 0.3);
                 slide.style.zIndex = '1';
             } else {
                 // اسلایدهای سمت چپ (بعدی)
-                slide.style.transform = `translateX(${-60 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
+                slide.style.transform = `translateX(${-110 * Math.abs(distance)}%) scale(${0.8 - (Math.abs(distance) - 1) * 0.1})`;
                 slide.style.opacity = Math.max(0.7 - (Math.abs(distance) - 1) * 0.2, 0.3);
                 slide.style.zIndex = '1';
             }

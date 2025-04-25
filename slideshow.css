@@ -43,21 +43,21 @@
 
 /* افزایش فاصله اسلایدهای غیرفعال */
 .services-slide:nth-child(1) {
-    transform: translateX(60%) scale(0.8);
+    transform: translateX(90%) scale(0.8);
 }
 
 .services-slide:nth-child(3) {
-    transform: translateX(-60%) scale(0.8);
+    transform: translateX(-90%) scale(0.8);
 }
 
 /* استایل برای اسلایدهای اضافی در آینده */
 .services-slide:nth-child(4) {
-    transform: translateX(-80%) scale(0.7);
+    transform: translateX(-110%) scale(0.7);
     opacity: 0.5;
 }
 
 .services-slide:nth-child(5) {
-    transform: translateX(80%) scale(0.7);
+    transform: translateX(110%) scale(0.7);
     opacity: 0.5;
 }
 
