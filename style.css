@@ -60,7 +60,7 @@ body {
 
 .mac-dock {
     position: fixed;
-    top: 45px;
+    top: 2vw;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(100, 100, 160, 0.1);
@@ -78,8 +78,8 @@ body {
     box-shadow: 0 0px 30px rgba(155, 126, 222, 0.25);
   }
   .dock-icon {
-    width: 3vw;
-    height: 3vw;
+    width: 7vh;
+    height: 7vh;
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: 30%;
     display: flex;
@@ -121,8 +121,8 @@ body {
   .subscription-section {
     background-color: rgba(255, 255, 255, 0.19);
     backdrop-filter: blur(12px);
-    padding: 50px;
-    border-radius: 66px;
+    padding: 3vw;
+    border-radius: 5vw;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-wrap: wrap;
@@ -164,10 +164,10 @@ body {
   }
 
   .sub-box {
-    width: 180px;
-    height: 180px;
+    width: 10vw;
+    height: 10vw;
     background-color: rgba(141, 116, 199, 1);
-    border-radius: 55px;
+    border-radius: 3vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -190,7 +190,8 @@ body {
   }
 
   .sub-box .duration {
-    font-size: 17px;
+    font-size: 2vw;
+    white-space: nowrap;
     opacity: 0.8;
     border: #ffffff 1px solid;
   }
@@ -790,8 +791,7 @@ body {
 }
 
 .ai-message {
-    padding: 1.3rem 1rem;
-    margin-bottom: 1.5rem; /* افزایش فاصله بین پیام‌ها */
+    padding: 2vh 2vw;
     border-radius: 15px;
     position: relative;
     transition: 0.3s;
@@ -952,16 +952,15 @@ body {
 }
 
 .search-container {
-    background: #1a1a1a;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: black;
+    border-radius: 15px;
     display: flex;
-    align-items:center;
-    justify-content: right;
-    padding: 2vh 1vw;
-    max-width: 40vw;
-    float: right;
-    margin-bottom: 4vh;
+    align-items: center;
+    padding: 2vh 2vw;
+    gap: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 2vh;
     
   }
 
@@ -970,23 +969,24 @@ body {
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 6px 12px;
-    margin-left: 10px;
+    padding: 1vh 1vw;
     font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    left: 0;
+    flex-shrink: 0; /* جلوگیری از کوچک شدن دکمه */
   }
 
   .search-text {
     color: #ccc;
     font-size: 100%;
     white-space: nowrap;
-    overflow:hidden;
-    text-overflow:clip;
-    padding-left: 13vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;        /* پر کردن فضای باقی‌مانده سمت راست */
+    min-width: 0;
+
   }
 
 .ai-interface:hover{
