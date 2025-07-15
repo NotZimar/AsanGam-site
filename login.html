@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ثبت نام</title>
+  <link rel="stylesheet" href="login-style.css">
+  <style>
+    /* استایل‌های اختصاصی این صفحه را اینجا قرار دهید */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="right-panel">
+        <h2>ثبت نام</h2>
+        <p>فرم زیر را پر و روی ثبت نام کلیک کنید</p>
+        <form>
+          <input type="text" placeholder="شماره تلفن" required>
+          <input type="text" placeholder="نام کاربری" required>
+          <input type="password" placeholder="رمز عبور" required>
+          <input type="password" placeholder="تکرار رمز عبور" required>
+          <div class="user-type">
+            <label><input type="radio" name="type" value="owner"> صاحب کافه</label>
+            <label><input type="radio" name="type" value="customer" checked> مشتری</label>
+          </div>
+          <div class="terms">
+            <label>
+              <input type="checkbox" required>
+              <span>شرایط را خوانده و قبول دارم</span>
+            </label>
+          </div>
+          <button type="submit" class="submit-btn">ثبت نام</button>
+        </form>
+      </div>
+  
+    <div class="left-panel">
+      <div class="feedback-box">
+        <div class="center-icon">
+          <!-- جای آیکون SVG یا عکس شما -->
+        </div>
+        <div class="feedback-title">نظر مخاطبان درباره ما</div>
+        <div class="feedback-content" id="feedback-content">
+          <!-- نظر کاربر اینجا قرار می‌گیرد -->
+        </div>
+        <div class="feedback-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="login-js.js"></script>
+</body>
+</html>
