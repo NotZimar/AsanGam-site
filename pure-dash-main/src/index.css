@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+/* Coffee Dashboard Theme (Dark Purple Version) */
+--background: 282 50% 5%; /* خیلی نزدیک به مشکی با ته‌مایه بنفش */
+--foreground: 0 0% 100%;
+
+--card: 282 40% 8%; /* تیره‌تر از قبل */
+--card-foreground: 0 0% 100%;
+
+--popover: 282 40% 8%;
+--popover-foreground: 0 0% 100%;
+
+--primary: 282 100% 50%; /* #B700FF */
+--primary-foreground: 0 0% 100%;
+
+--secondary: 282 100% 64%; /* #CC49FF */
+--secondary-foreground: 0 0% 100%;
+
+--muted: 282 100% 78%; /* #E092FF */
+--muted-foreground: 0 90% 90%;
+
+--accent: 282 100% 57%; /* #C124FF */
+--accent-foreground: 0 0% 100%;
+
+--destructive: 0 75% 60%;
+--destructive-foreground: 0 0% 100%;
+
+--border: 282 100% 71%; /* #D66DFF */
+--input: 282 100% 71%; /* #D66DFF */
+--ring: 282 100% 50%; /* #B700FF */
+
+--radius: 0.75rem;
+
+/* Coffee Theme Colors (Purple Adaptation) */
+--coffee-brown: 282 50% 10%; /* نزدیک مشکی */
+--coffee-light: 282 100% 64%;
+--coffee-cream: 282 100% 92%;
+--coffee-gold: 282 100% 78%;
+--coffee-dark: 282 40% 6%; /* تقریباً مشکی */
+
+/* Gradients */
+--gradient-coffee: linear-gradient(135deg, hsl(var(--coffee-brown)), hsl(var(--coffee-light)));
+--gradient-warm: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+--gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(282 40% 6%));
+
+
+
+    /* Shadows */
+    --shadow-coffee: 0 10px 30px -10px hsl(var(--coffee-brown) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Progress Bar Animation */
+  .progress-bar {
+    @apply relative overflow-hidden rounded-full;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-1000 ease-out;
+    background: var(--gradient-warm);
+  }
+
+  /* Coffee Card Effects */
+  .coffee-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-coffee);
+    transition: var(--transition-smooth);
+  }
+
+  .coffee-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Profile Avatar */
+  .profile-avatar {
+    @apply relative overflow-hidden rounded-full border-4 border-primary/20;
+    background: var(--gradient-warm);
+  }
+
+  /* Button Variants */
+  .btn-coffee {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+    background: var(--gradient-warm);
+    color: hsl(var(--primary-foreground));
+  }
+
+  .btn-coffee:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-coffee-outline {
+    @apply px-6 py-3 rounded-lg font-medium border border-primary/30 bg-transparent text-primary transition-all duration-300;
+  }
+
+  .btn-coffee-outline:hover {
+    @apply bg-primary/10 border-primary;
+  }
+
+  /* Level Badge */
+  .level-badge {
+    @apply px-3 py-1 rounded-full text-sm font-semibold;
+    background: var(--gradient-warm);
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Floating Animation */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+  }
+}
