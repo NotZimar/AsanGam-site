@@ -26,19 +26,108 @@ html {
 }
 
 body {
-    background: #181526;
+    background-image: url("../images/bac\ asangam\ org.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
     color: var(--light);
     line-height: 1.7;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
 }
-.bg {
+/* .bg {
     height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     scroll-snap-align: start;
+  } */
+
+.mac-dock {
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(100, 100, 160, 0.1);
+  border-radius: 3vh;
+  padding: 15px;
+  display: flex;
+  gap: 1vw;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  z-index: 999;
+}
+.dock-icon {
+  width: 7vh;
+  height: 7vh;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.dock-icon:hover {
+  transform: scale(1.15);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0px 30px rgba(155, 126, 222, 0.25);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.dock-icon:hover .tooltip {
+  opacity: 1;
+}
+.dockimg{
+  width: 7vh;
+  height: 7vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .dock-icon{
+  width: 10vw;
+  height: 10vw;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
   }
+  .dockimg{
+      width: 10vw;
+      height: 10vw;
+  }
+  .mac-dock{
+    padding: 7px;
+    border-radius: 4vw;
+
+  }
+
+}
+  .dock-icon img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
 /* افکت موس */
 .cursor-effect {
     width: 40px;
@@ -58,56 +147,6 @@ body {
 }
 
 
-.mac-dock {
-    position: fixed;
-    top: 2vw;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(100, 100, 160, 0.1);
-    border-radius: 3vh;
-    padding: 15px;
-    display: flex;
-    gap: 1vw;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
-    z-index: 999;
-  }
-  .dock-icon:hover {
-    transform: scale(1.15);
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0px 30px rgba(155, 126, 222, 0.25);
-  }
-  .dock-icon {
-    width: 7vh;
-    height: 7vh;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    cursor: pointer;
-  }
-  .tooltip {
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-  }
-  .dock-icon:hover .tooltip {
-    opacity: 1;
-  }
-  .dock-icon img {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-  }
 
 
 
