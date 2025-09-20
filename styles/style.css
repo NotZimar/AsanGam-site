@@ -26,7 +26,7 @@ html {
 }
 
 body {
-    background-image: url("../images/bac\ asangam\ org.jpeg");
+    background-image: url("../images/bac\ asangam\ org.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,8 +59,8 @@ body {
   z-index: 999;
 }
 .dock-icon {
-  width: 7vh;
-  height: 7vh;
+  width: 7vw;
+  height: 7vw;
   background-color: rgba(255, 255, 255, 0.08);
   border-radius: 30%;
   display: flex;
@@ -94,10 +94,6 @@ body {
 .dock-icon:hover .tooltip {
   opacity: 1;
 }
-.dockimg{
-  width: 7vh;
-  height: 7vh;
-}
 
 @media only screen and (max-width: 600px) {
   .dock-icon{
@@ -123,8 +119,8 @@ body {
 
 }
   .dock-icon img {
-    width: 100%;
-    height: 100%;
+    width: 7vh;
+    height: 7vh;  
     opacity: 1;
   }
 
